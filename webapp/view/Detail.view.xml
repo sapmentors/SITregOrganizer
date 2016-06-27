@@ -1,0 +1,57 @@
+<mvc:View 
+	controllerName="com.sap.sapmentors.sitreg.events.controller.Detail" 
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{Location}" number="{
+							path: 'EventDate',
+							type: 'sap.ui.model.type.Date',
+							formatOptions: {
+								style: 'medium'
+							}
+						}">
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+						<f:SimpleForm id="eventForm"
+							title="{i18n>eventDetails}"
+							editable="false"
+							class="editableForm sapUiSmallMarginTopBottom">
+							<f:content>
+								<Label text="{i18n>StartTime}"/>
+								<Input value="{ path: 'StartTime', type: 'sap.ui.model.odata.type.Time' }"/>
+								<Label text="{i18n>EndTime}"/>
+								<Input value="{ path: 'EndTime', type: 'sap.ui.model.odata.type.Time' }"/>
+								<Label text="{i18n>MaxParticipants}"/>
+								<Input value="{MaxParticipants}"/>
+								<Label text="{i18n>HomepageURL}"/>
+								<Link  href="{HomepageURL}" text="{HomepageURL}" target="_blank" />
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="edit" press="onEdit"/>
+		</semantic:editAction>
+		<semantic:customFooterContent>
+			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+		</semantic:customFooterContent>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,42 @@
+<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit com.sap.sapmentors.sitreg.odataorganizer.service.EventsType': 'New com.sap.sapmentors.sitreg.odataorganizer.service.EventsType'}">
+				<f:content>
+					<Label text="ID" required="true"/>
+					<Input name="ID" id="ID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
+					<Label text="Location" required="false"/>
+					<Input name="Location" id="Location_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
+					<Label text="EventDate" required="false"/>
+					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.DateTime'}" id="EventDate_id" type="DateTime"
+						enabled="true" visible="true"/>
+					<Label text="StartTime" required="false"/>
+					<Input name="StartTime" id="StartTime_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'StartTime', type: 'sap.ui.model.odata.type.Time' }"/>
+					<Label text="EndTime" required="false"/>
+					<Input name="EndTime" id="EndTime_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'EndTime', type: 'sap.ui.model.odata.type.Time' }"/>
+					<Label text="MaxParticipants" required="false"/>
+					<Input name="MaxParticipants" id="MaxParticipants_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }"/>
+					<Label text="HomepageURL" required="false"/>
+					<Input name="HomepageURL" id="HomepageURL_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'HomepageURL', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
