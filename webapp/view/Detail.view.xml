@@ -19,7 +19,6 @@
 				<items>
 					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
 						<f:SimpleForm id="eventForm"
-							title="{i18n>eventDetails}"
 							editable="false"
 							class="editableForm sapUiSmallMarginTopBottom">
 							<f:content>

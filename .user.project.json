@@ -1,6 +1,24 @@
 {
   "run": [
     {
+      "filePath": "/webapp/test/flpSandbox.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6805181,
+        "displayName": "Run flpSandbox.html",
+        "lastRunTimeStamp": 1467149289736
+      }
+    },
+    {
       "filePath": "/SITreg-Events/webapp/test/flpSandbox.html",
       "previewMode": 1,
       "dataMode": 1,
@@ -24,8 +42,7 @@
       "_metadata": {
         "id": 1978925,
         "runnerId": "webapprunner",
-        "displayName": "App in FLP Sandbox",
-        "lastRunTimeStamp": 1467029757925
+        "displayName": "App in FLP Sandbox"
       }
     },
     {
@@ -52,8 +69,7 @@
       "_metadata": {
         "id": 1978926,
         "runnerId": "webapprunner",
-        "displayName": "App in FLP Sandbox (Mocked)",
-        "lastRunTimeStamp": 1467029591610
+        "displayName": "App in FLP Sandbox (Mocked)"
       }
     },
     {
