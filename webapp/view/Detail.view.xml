@@ -37,7 +37,48 @@
 							</f:content>
 						</f:SimpleForm>
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
+					<IconTabFilter 
+						id="iconTabBarFilter2" 
+						icon="sap-icon://employee-approvals" 
+						tooltip="{i18n>detailIconTabBarCoOrganizers}">
+						<Table id="idCoOrganizerTable"
+							items="{
+								path: 'CoOrganizers',
+								sorter: {
+									path: 'UserName'
+								}
+							}">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>detailIconTabBarCoOrganizers}" level="H2"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="UserName" />
+								</Column>
+								<Column
+									hAlign="Center"
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<Text text="Active" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier
+											title="{UserName}" />
+										<Switch 
+											state="{= ${Active} === 'Y' ? true : false }" 
+											customTextOn="Yes" 
+											customTextOff="No"
+											enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
 				</items>
 			</IconTabBar>
 		</semantic:content>
