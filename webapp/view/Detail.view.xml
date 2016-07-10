@@ -32,6 +32,8 @@
 								<Link  href="{HomepageURL}" text="{HomepageURL}" target="_blank" />
 								<Label text="{i18n>HistoryCreatedBy}"/>
 								<Text text="{History.CreatedBy}"/>
+								<Label text="{i18n>EventChangeable}"/>
+								<Text text="{EventChangeable/Changeable}"/>
 							</f:content>
 						</f:SimpleForm>
 					</IconTabFilter>
@@ -43,7 +45,7 @@
 			<semantic:EditAction 
 				id="edit" 
 				press="onEdit"
-				enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }" />
+				enabled="{= ${EventChangeable/Changeable} === 1 ? true : false }" />
 		</semantic:editAction>
 		<!-- Delete is not allowed by the OData Service -->
 		<!--
