@@ -40,11 +40,17 @@
 			</IconTabBar>
 		</semantic:content>
 		<semantic:editAction>
-			<semantic:EditAction id="edit" press="onEdit"/>
+			<semantic:EditAction 
+				id="edit" 
+				press="onEdit"
+				enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }" />
 		</semantic:editAction>
+		<!-- Delete is not allowed by the OData Service -->
+		<!--
 		<semantic:customFooterContent>
 			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
 		</semantic:customFooterContent>
+		-->
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>

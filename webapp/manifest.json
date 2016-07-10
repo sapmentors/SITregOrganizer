@@ -72,6 +72,10 @@
 					"bundleName": "com.sap.sapmentors.sitreg.events.i18n.i18n"
 				}
 			},
+			"currentUser": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "/services/userapi/currentUser"
+			},
 			"": {
 				"dataSource": "mainService",
 				"settings": {
