@@ -43,7 +43,14 @@
         "name": "HANAMDC"
       },
       "description": "HANA MDC XS"
-    }
+    },
+	{
+		"path": "/services/userapi", 
+		"target": {
+			"type": "service",
+			"name": "userapi"
+		}
+	}
   ],
   "welcomeFile": "/webapp/test/flpSandbox.html",
   "sendWelcomeFileRedirect": true
