@@ -30,6 +30,8 @@
 								<Text text="{MaxParticipants}"/>
 								<Label text="{i18n>HomepageURL}"/>
 								<Link  href="{HomepageURL}" text="{HomepageURL}" target="_blank" />
+								<Label text="{i18n>HistoryCreatedBy}"/>
+								<Text text="{History.CreatedBy}"/>
 							</f:content>
 						</f:SimpleForm>
 					</IconTabFilter>
