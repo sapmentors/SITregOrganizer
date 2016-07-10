@@ -1,6 +1,33 @@
 {
   "run": [
     {
+      "filePath": "/webapp/test/unit/unitTests.qunit.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 1,
+      "urlParameters": [
+        {
+          "paramName": "",
+          "paramValue": "",
+          "paramActive": false
+        },
+        {
+          "paramName": "",
+          "paramValue": "",
+          "paramActive": false
+        }
+      ],
+      "_metadata": {
+        "id": 8735167,
+        "runnerId": "webapprunner",
+        "displayName": "Unit Tests",
+        "lastRunTimeStamp": 1468140742013
+      }
+    },
+    {
       "filePath": "/webapp/test/flpSandbox.html",
       "previewMode": 1,
       "dataMode": 1,
@@ -12,10 +39,9 @@
       "hashParameter": "",
       "backendSystem": [],
       "_metadata": {
-        "runnerId": "webapprunner",
         "id": 6805181,
-        "displayName": "Run flpSandbox.html",
-        "lastRunTimeStamp": 1468140160765
+        "runnerId": "webapprunner",
+        "displayName": "Run flpSandbox.html"
       }
     },
     {
@@ -70,32 +96,6 @@
         "id": 1978926,
         "runnerId": "webapprunner",
         "displayName": "App in FLP Sandbox (Mocked)"
-      }
-    },
-    {
-      "filePath": "/SITreg-Events/webapp/test/unit/unitTests.qunit.html",
-      "previewMode": 1,
-      "dataMode": 1,
-      "workspace": "withoutWorkspace",
-      "ui5ActiveVersion": null,
-      "ui5VerSource": null,
-      "isDefaultVersion": 1,
-      "urlParameters": [
-        {
-          "paramName": "",
-          "paramValue": "",
-          "paramActive": false
-        },
-        {
-          "paramName": "",
-          "paramValue": "",
-          "paramActive": false
-        }
-      ],
-      "_metadata": {
-        "id": 8735167,
-        "runnerId": "webapprunner",
-        "displayName": "Unit Tests"
       }
     },
     {

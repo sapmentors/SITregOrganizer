@@ -10,3 +10,4 @@ sap-ui-cachebuster-info.json
 extended_runnable_file.html
 .*/extended_runnable_file.html
 /webapp/test/preview_hidden.html
+/webapp/test/unit/preview_hidden.html
