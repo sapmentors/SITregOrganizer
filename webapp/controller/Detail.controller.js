@@ -20,13 +20,14 @@ sap.ui.define([
 			// Model used to manipulate control states. The chosen values make sure,
 			// detail page is busy indication immediately so there is no break in
 			// between the busy indication for loading the view's meta data
-			var oViewModel = new JSONModel({
+			this._oViewModel = new JSONModel({
 				busy: false,
+				enableCreateCoOrganizer: false,
 				delay: 0
 			});
 
 			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
-			this.setModel(oViewModel, "detailView");
+			this.setModel(this._oViewModel, "detailView");
 			this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
 			this._oODataModel = this.getOwnerComponent().getModel();
 			this._oResourceBundle = this.getResourceBundle();
@@ -110,7 +111,26 @@ sap.ui.define([
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
-
+		/**
+		 * Checks if the save button can be enabled
+		 * @private
+		 */
+		_validateSaveEnablementCoOrganizer: function() {
+			var aInputControls = this._getFormFields(this.byId("newCoOrganizerSimpleForm"));
+			var oControl;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oControl = aInputControls[m].control;
+				if (aInputControls[m].required) {
+					var sValue = oControl.getValue();
+					if (!sValue) {
+						this._oViewModel.setProperty("/enableCreateCoOrganizer", false);
+						return;
+					} else {
+						this._oViewModel.setProperty("/enableCreateCoOrganizer", true);
+					}
+				}
+			}
+		},
 		/**
 		 * Binds the view to the object path and expands the aggregated line items.
 		 * @function

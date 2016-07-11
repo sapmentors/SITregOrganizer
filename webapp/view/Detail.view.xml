@@ -41,6 +41,19 @@
 						id="iconTabBarFilter2" 
 						icon="sap-icon://employee-approvals" 
 						tooltip="{i18n>detailIconTabBarCoOrganizers}">
+						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
+							labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" 
+							visible="{= ${EventChangeable/Changeable} === 1 ? true : false }"
+							title="AddCoOrganizer">
+							<f:content>
+								<Label text="UserName" required="true"/>
+								<Input name="UserName" id="UserName_id" valueLiveUpdate="true" 
+									liveChange="_validateSaveEnablementCoOrganizer"
+									enabled="true" visible="true"
+									value="{ path: 'UserName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256, nullable:false } }"/>
+								<Button enabled="{detailView>/enableCreateCoOrganizer}" id="saveCoOrganizer" text="Save" />
+							</f:content>
+						</f:SimpleForm>
 						<Table id="idCoOrganizerTable"
 							items="{
 								path: 'CoOrganizers',
