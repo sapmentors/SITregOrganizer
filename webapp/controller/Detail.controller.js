@@ -138,10 +138,12 @@ sap.ui.define([
 
 		_onSaveCoOrganizerSuccess: function(oData) {
 			this.byId("UserName_id").setValue(null);
-			MessageToast.show("CoOrganizer saved");
+			var sMessage = this.getResourceBundle().getText("onSaveCoOrganizerSuccess");
+			MessageToast.show(sMessage);
 		},
 		_onSaveCoOrganizerError: function(oError) {
-			MessageToast.show("Error saving CoOrganizer");
+			var sMessage = this.getResourceBundle().getText("onSaveCoOrganizerSuccess");
+			MessageToast.show(sMessage);
 		},
 		/**
 		 * Checks if the save button can be enabled

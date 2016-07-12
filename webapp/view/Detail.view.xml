@@ -45,12 +45,13 @@
 						id="iconTabBarFilter2" 
 						icon="sap-icon://employee-approvals" 
 						tooltip="{i18n>detailIconTabBarCoOrganizers}">
-						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
+						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" 
+							emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
 							labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" 
 							visible="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }"
-							title="AddCoOrganizer">
+							title="{i18n>detailAddCoOrganizer}">
 							<f:content>
-								<Label text="UserName" required="true"/>
+								<Label text="{i18n>detailUserName}" required="true"/>
 								<Input 
 									id="UserName_id" 
 									valueLiveUpdate="true" 
