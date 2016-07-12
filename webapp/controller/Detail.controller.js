@@ -107,10 +107,42 @@ sap.ui.define([
 				objectPath: sObjectPath
 			});
 		},
+		/**
+		 * Event handler for the view save co-organizer button. Create entry in model and save data. 
+		 * @function
+		 * @public
+		 */
+		onSaveCoOrganizer: function(oEvent) {
+			var oViewModel = this.getModel("detailView"),
+				sPath = oViewModel.getProperty("/sObjectPath"),
+				sID = this._oODataModel.getProperty(sPath + "/ID");		
+			var sUserName = this.byId("UserName_id").getValue();
+			// create entry properties
+			var oEntry = {
+				EventID  : sID,
+				UserName : sUserName,
+				Active   : "Y"
+			};
+			this._oODataModel.createEntry("/CoOrganizers", {
+				properties: oEntry
+			});
+			this._oODataModel.submitChanges({
+				success: this._onSaveCoOrganizerSuccess.bind(this), 
+				error: this._onSaveCoOrganizerError.bind(this)
+			});
+		},		
 
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
+
+		_onSaveCoOrganizerSuccess: function(oData) {
+			this.byId("UserName_id").setValue(null);
+			MessageToast.show("CoOrganizer saved");
+		},
+		_onSaveCoOrganizerError: function(oError) {
+			MessageToast.show("Error saving CoOrganizer");
+		},
 		/**
 		 * Checks if the save button can be enabled
 		 * @private
