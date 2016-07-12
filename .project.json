@@ -12,7 +12,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true
+    "buildRequired": false,
+    "lastBuildDateTime": "Tue, 12 Jul 2016 18:03:24 GMT"
   },
   "generation": [
     {
@@ -46,5 +47,10 @@
     "notifyBeforePushLevel": "Error",
     "blockPush": false,
     "blockPushLevel": "Error"
+  },
+  "hcpdeploy": {
+    "account": "s0001142741trial",
+    "name": "sitregorganizer",
+    "lastVersionWeTriedToDeploy": "0.0.2"
   }
 }

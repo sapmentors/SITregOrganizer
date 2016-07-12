@@ -1,31 +1,21 @@
 {
   "run": [
     {
-      "filePath": "/webapp/Component.js",
+      "filePath": "/webapp/index.html",
       "previewMode": 1,
       "dataMode": 1,
       "workspace": "withoutWorkspace",
       "ui5ActiveVersion": null,
       "ui5VerSource": null,
-      "isDefaultVersion": 1,
-      "urlParameters": [
-        {
-          "paramName": "",
-          "paramValue": "",
-          "paramActive": false
-        },
-        {
-          "paramName": "",
-          "paramValue": "",
-          "paramActive": false
-        }
-      ],
+      "isDefaultVersion": 0,
+      "urlParameters": [],
       "hashParameter": "",
+      "backendSystem": [],
       "_metadata": {
-        "id": 5239014,
-        "runnerId": "fiorirunner",
-        "displayName": "App as Fiori Component",
-        "lastRunTimeStamp": 1468169066249
+        "id": 4991539,
+        "runnerId": "webapprunner",
+        "displayName": "Run index.html",
+        "lastRunTimeStamp": 1468346372055
       }
     },
     {
@@ -177,6 +167,33 @@
         "id": 7524840,
         "runnerId": "webapprunner",
         "displayName": "Testsuite (Unit, OPA)"
+      }
+    },
+    {
+      "filePath": "/webapp/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 1,
+      "urlParameters": [
+        {
+          "paramName": "",
+          "paramValue": "",
+          "paramActive": false
+        },
+        {
+          "paramName": "",
+          "paramValue": "",
+          "paramActive": false
+        }
+      ],
+      "hashParameter": "",
+      "_metadata": {
+        "id": 5239014,
+        "runnerId": "fiorirunner",
+        "displayName": "App as Fiori Component"
       }
     }
   ]
