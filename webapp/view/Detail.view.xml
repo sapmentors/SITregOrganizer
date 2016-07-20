@@ -48,7 +48,7 @@
 						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" 
 							emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
 							labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" 
-							visible="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }"
+							visible="{detailView>/hasEditAuthorityCoOrganizer}"
 							title="{i18n>detailAddCoOrganizer}">
 							<f:content>
 								<Label text="{i18n>detailUserName}" required="true"/>

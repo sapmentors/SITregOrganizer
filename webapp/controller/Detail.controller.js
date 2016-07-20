@@ -23,6 +23,7 @@ sap.ui.define([
 			this._oViewModel = new JSONModel({
 				busy: false,
 				enableCreateCoOrganizer: false,
+				hasEditAuthorityCoOrganizer: false,
 				delay: 0
 			});
 
@@ -31,6 +32,7 @@ sap.ui.define([
 			this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
 			this._oODataModel = this.getOwnerComponent().getModel();
 			this._oResourceBundle = this.getResourceBundle();
+			this._oViewModel.setProperty("/hasEditAuthorityCoOrganizer", this.hasEditAuthorization());
 		},
 
 		/* =========================================================== */
@@ -122,6 +124,9 @@ sap.ui.define([
 				EventID  : sID,
 				UserName : sUserName,
 				Active   : "Y"
+				EventID  : sID,
+				UserName : sUserName,
+				Active   : "Y"
 			};
 			this._oODataModel.createEntry("/CoOrganizers", {
 				properties: oEntry
@@ -135,6 +140,17 @@ sap.ui.define([
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
+
+		/**
+		 * Checks for a condition whether Co-Organizers have edit authority or not
+		 * @function
+		 * @public
+		 */
+		hasEditAuthorization: function() {
+			/*var hasAuth = this.History.CreatedBy === //this.getModel("currentUser").getProperty("/name");*/
+			var hasAuth = true;  
+			return hasAuth;
+		},
 
 		_onSaveCoOrganizerSuccess: function(oData) {
 			this.byId("UserName_id").setValue(null);
