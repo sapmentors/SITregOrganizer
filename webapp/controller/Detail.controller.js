@@ -124,9 +124,6 @@ sap.ui.define([
 				EventID  : sID,
 				UserName : sUserName,
 				Active   : "Y"
-				EventID  : sID,
-				UserName : sUserName,
-				Active   : "Y"
 			};
 			this._oODataModel.createEntry("/CoOrganizers", {
 				properties: oEntry
