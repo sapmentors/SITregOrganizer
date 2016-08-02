@@ -67,6 +67,7 @@ sap.ui.define([
 		/**
 		 * Gets the form fields
 		 * @param {sap.ui.layout.form} oSimpleForm the form in the view.
+		 * @returns {Array} aControls 
 		 * @private
 		 */
 		_getFormFields: function(oSimpleForm) {
@@ -75,8 +76,9 @@ sap.ui.define([
 			var sControlType;
 			for (var i = 0; i < aFormContent.length; i++) {
 				sControlType = aFormContent[i].getMetadata().getName();
-				if (sControlType === "sap.m.Input" || sControlType === "sap.m.DateTimeInput" ||
-					sControlType === "sap.m.CheckBox") {
+				if (   sControlType === "sap.m.Input" 
+					|| sControlType === "sap.m.DateTimeInput" 
+					|| sControlType === "sap.m.CheckBox") {
 					aControls.push({
 						control: aFormContent[i],
 						required: aFormContent[i - 1].getRequired && aFormContent[i - 1].getRequired()
