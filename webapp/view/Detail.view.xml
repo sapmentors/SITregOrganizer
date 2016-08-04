@@ -103,6 +103,52 @@
 							</items>
 						</Table>
 					</IconTabFilter>
+					
+						<!--Start of chnages from mgulla 03.08.2016-->
+					
+					<IconTabFilter id="iconTabBarFilter3" icon="sap-icon://group" tooltip="{i18n>deatailIconPartipitants}">
+						<Table id="idPartipicantsTable" items="{ path: 'Participants', sorter: { path: 'FirstName' } }">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>deatailIconPartipitants}" level="H2"/>
+										<ToolbarSpacer/>
+				<Button icon="sap-icon://download" press="onDataExport" id="tableParti"/>
+								</Toolbar>
+							</headerToolbar>
+						
+							<columns>
+								<Column>
+									<Text text="{i18n>columnFirstName}"/>
+								</Column>
+								<Column>
+									<Text text="{i18n>columnLastName}"/>
+								</Column>
+								<Column minScreenWidth="Small" demandPopin="true">
+									<Text text="{i18n>columnEMail}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="false">
+									<Text text="{i18n>columnMobilePhone}"/>
+								</Column>
+								<Column hAlign="End">
+									<Text text="{i18n>columnRSVP}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation" press="onPress">
+									<cells>
+										<ObjectIdentifier title="{FirstName}"/>
+										<Text text="{LastName}"/>
+										<Text text="{EMail}"/>
+										<Text text="{MobilePhone}"/>
+										<Text text="{RSVP}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+					</Table>
+				</IconTabFilter>
+				<!--End of chnages from mgulla 03.08.2016-->
+					
+					
 				</items>
 			</IconTabBar>
 		</semantic:content>
