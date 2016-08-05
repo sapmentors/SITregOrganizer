@@ -27,9 +27,9 @@
 							class="editableForm sapUiSmallMarginTopBottom">
 							<f:content>
 								<Label text="{i18n>StartTime}"/>
-								<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime' }"/>
+								<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: {	pattern: 'HH:mm'} }"/>
 								<Label text="{i18n>EndTime}"/>
-								<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime' }"/>
+								<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: {	pattern: 'HH:mm'} }"/>
 								<Label text="{i18n>MaxParticipants}"/>
 								<Text text="{MaxParticipants}"/>
 								<Label text="{i18n>HomepageURL}"/>

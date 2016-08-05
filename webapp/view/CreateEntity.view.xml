@@ -15,14 +15,14 @@
 					<Input name="Location" id="Location_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
 					<Label text="{i18n>EventDate}" required="false"/>
-					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.DateTime'}" id="EventDate_id"
-						enabled="true" visible="true"/>
+					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.Date'}" id="EventDate_id" enabled="true"
+						visible="true" valueFormat="yyyy-MM-dd" displayFormat="long"/>
 					<Label text="{i18n>StartTime}" required="false"/>
-					<DatePicker name="StartTime" value="{ path: 'StartTime', type: 'sap.ui.model.type.DateTime'}" id="StartTime_id"
-						enabled="true" visible="true"/>
+					<TimePicker id="StartTime_id" value="{ path: 'StartTime', type: 'sap.ui.model.type.Time'}" valueFormat="HH:mm" displayFormat="HH:mm"
+						placeholder="{i18n>StartTime}"/>
 					<Label text="{i18n>EndTime}" required="false"/>
-					<DatePicker name="EndTime" value="{ path: 'EndTime', type: 'sap.ui.model.type.DateTime'}" id="EndTime_id"
-						enabled="true" visible="true"/>
+					<TimePicker id="EndTime_id" value="{ path: 'EndTime', type: 'sap.ui.model.type.Time'}" valueFormat="HH:mm" displayFormat="HH:mm"
+						placeholder="{i18n>EndTime}"/>
 					<Label text="{i18n>MaxParticipants}" required="false"/>
 					<Input name="MaxParticipants" id="MaxParticipants_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
 						visible="true" value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }"/>
