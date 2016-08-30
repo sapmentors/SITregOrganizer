@@ -117,22 +117,46 @@ sap.ui.define([
 		onSaveCoOrganizer: function(oEvent) {
 			var oViewModel = this.getModel("detailView"),
 				sPath = oViewModel.getProperty("/sObjectPath"),
-				sID = this._oODataModel.getProperty(sPath + "/ID");		
+				sID = this._oODataModel.getProperty(sPath + "/ID");
 			var sUserName = this.byId("UserName_id").getValue();
 			// create entry properties
 			var oEntry = {
-				EventID  : sID,
-				UserName : sUserName,
-				Active   : "Y"
+				EventID: sID,
+				UserName: sUserName,
+				Active: "Y"
 			};
 			this._oODataModel.createEntry("/CoOrganizers", {
 				properties: oEntry
 			});
 			this._oODataModel.submitChanges({
-				success: this._onSaveCoOrganizerSuccess.bind(this), 
+				success: this._onSaveCoOrganizerSuccess.bind(this),
 				error: this._onSaveCoOrganizerError.bind(this)
 			});
-		},		
+		},
+
+		/**
+		 * Event handler for the view export partipicants as excel. 
+		 * @function
+		 * @public
+		 */
+		onDataExport: function(oEvent) {
+			var odxlServiceEndpoint = "/destinations/HANAMDC/system-local/public/rbouman/odxl/service/odxl.xsjs/";
+			var oViewModel = this.getModel("detailView"),
+				sPath = oViewModel.getProperty("/sObjectPath"),
+				sID = this._oODataModel.getProperty(sPath + "/ID");
+			var sServiceUrl = '"SITREG"/"com.sap.sapmentors.sitreg.odataorganizer.procedures::ParticipantsRead"';
+			var filter = '?$filter="EventID" eq' + sID;
+			var odataQuery = sServiceUrl + filter;
+			var sUrl = odxlServiceEndpoint + odataQuery;
+			var extension = "xlsx";
+			var fileName = 'Participants' + "." + extension;
+			var encodeUrl = encodeURI(sUrl + "&$format=" + extension + "&download=" + fileName);
+			sap.m.URLHelper.redirect(encodeUrl, true);
+			// var downloadSheetLink = this.byId('exportXslx');
+			// var sHref = sUrl + "&$format=" + extension + "&download=" + fileName;
+			// downloadSheetLink.setHref(sHref);
+			// downloadSheetLink.download = fileName;
+		},
 
 		/* =========================================================== */
 		/* begin: internal methods                                     */
@@ -145,7 +169,7 @@ sap.ui.define([
 		 */
 		hasEditAuthorization: function() {
 			/*var hasAuth = this.History.CreatedBy === //this.getModel("currentUser").getProperty("/name");*/
-			var hasAuth = true;  
+			var hasAuth = true;
 			return hasAuth;
 		},
 
@@ -228,6 +252,11 @@ sap.ui.define([
 		 * @function
 		 * @private
 		 */
+		_getFileName: function(extension, name) {
+			var fileName;
+			fileName = name;
+			return fileName + "." + extension;
+		},
 
 		_onBindingChange: function() {
 			var oView = this.getView(),

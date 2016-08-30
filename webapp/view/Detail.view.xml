@@ -1,39 +1,23 @@
-<mvc:View 
-	controllerName="com.sap.sapmentors.sitreg.events.controller.Detail" 
-	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic" 
-	xmlns:f="sap.ui.layout.form"
-	xmlns:footerbar="sap.ushell.ui.footerbar">
+<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar">
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader
-				id="objectHeader"
-				title="{Location}"
-				numberUnit="{i18n>detailEventID}: {ID}"
-				number="{
-							path: 'EventDate',
-							type: 'sap.ui.model.type.Date',
-							formatOptions: {
-								style: 'medium'
-							}
-						}">
-			</ObjectHeader>
+			<ObjectHeader id="objectHeader" title="{Location}" numberUnit="{i18n>detailEventID}: {ID}"
+				number="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"></ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
-						<f:SimpleForm id="eventForm"
-							editable="false"
-							class="editableForm sapUiSmallMarginTopBottom">
+						<f:SimpleForm id="eventForm" editable="false" class="editableForm sapUiSmallMarginTopBottom">
 							<f:content>
 								<Label text="{i18n>StartTime}"/>
-								<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: {	pattern: 'HH:mm'} }"/>
+								<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
 								<Label text="{i18n>EndTime}"/>
-								<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: {	pattern: 'HH:mm'} }"/>
+								<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
 								<Label text="{i18n>MaxParticipants}"/>
 								<Text text="{MaxParticipants}"/>
 								<Label text="{i18n>HomepageURL}"/>
-								<Link  href="{HomepageURL}" text="{HomepageURL}" target="_blank" />
+								<Link href="{HomepageURL}" text="{HomepageURL}" target="_blank"/>
 								<Label text="{i18n>HistoryCreatedBy}"/>
 								<Text text="{History.CreatedBy}"/>
 								<Label text="{i18n>EventChangeable}"/>
@@ -41,37 +25,17 @@
 							</f:content>
 						</f:SimpleForm>
 					</IconTabFilter>
-					<IconTabFilter 
-						id="iconTabBarFilter2" 
-						icon="sap-icon://employee-approvals" 
-						tooltip="{i18n>detailIconTabBarCoOrganizers}">
-						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" 
-							emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
-							labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" 
-							visible="{detailView>/hasEditAuthorityCoOrganizer}"
-							title="{i18n>detailAddCoOrganizer}">
+					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://employee-approvals" tooltip="{i18n>detailIconTabBarCoOrganizers}">
+						<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newCoOrganizerSimpleForm"
+							labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+							visible="{detailView>/hasEditAuthorityCoOrganizer}" title="{i18n>detailAddCoOrganizer}">
 							<f:content>
 								<Label text="{i18n>detailUserName}" required="true"/>
-								<Input 
-									id="UserName_id" 
-									valueLiveUpdate="true" 
-									liveChange="_validateSaveEnablementCoOrganizer"
-									enabled="true" visible="true"
-									maxLength="256" />
-								<Button 
-									id="saveCoOrganizer" 
-									enabled="{detailView>/enableCreateCoOrganizer}" 
-									text="Save" 
-									press="onSaveCoOrganizer" />
+								<Input id="UserName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablementCoOrganizer" enabled="true" visible="true" maxLength="256"/>
+								<Button id="saveCoOrganizer" enabled="{detailView>/enableCreateCoOrganizer}" text="Save" press="onSaveCoOrganizer"/>
 							</f:content>
 						</f:SimpleForm>
-						<Table id="idCoOrganizerTable"
-							items="{
-								path: 'CoOrganizers',
-								sorter: {
-									path: 'UserName'
-								}
-							}">
+						<Table id="idCoOrganizerTable" items="{ path: 'CoOrganizers', sorter: { path: 'UserName' } }">
 							<headerToolbar>
 								<Toolbar>
 									<Title text="{i18n>detailIconTabBarCoOrganizers}" level="H2"/>
@@ -79,43 +43,34 @@
 							</headerToolbar>
 							<columns>
 								<Column>
-									<Text text="UserName" />
+									<Text text="UserName"/>
 								</Column>
-								<Column
-									hAlign="Center"
-									minScreenWidth="Tablet"
-									demandPopin="true">
-									<Text text="Active" />
+								<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Active"/>
 								</Column>
 							</columns>
 							<items>
 								<ColumnListItem>
 									<cells>
-										<ObjectIdentifier
-											title="{UserName}" />
-										<Switch 
-											state="{= ${Active} === 'Y' ? true : false }" 
-											customTextOn="Yes" 
-											customTextOff="No"
-											enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }" />
+										<ObjectIdentifier title="{UserName}"/>
+										<Switch state="{= ${Active} === 'Y' ? true : false }" customTextOn="Yes" customTextOff="No"
+											enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }"/>
 									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>
 					</IconTabFilter>
-					
-						<!--Start of chnages from mgulla 03.08.2016-->
-					
+					<!--Start of chnages from mgulla 03.08.2016-->
 					<IconTabFilter id="iconTabBarFilter3" icon="sap-icon://group" tooltip="{i18n>deatailIconPartipitants}">
 						<Table id="idPartipicantsTable" items="{ path: 'Participants', sorter: { path: 'FirstName' } }">
 							<headerToolbar>
 								<Toolbar>
 									<Title text="{i18n>deatailIconPartipitants}" level="H2"/>
-										<ToolbarSpacer/>
-				<Button icon="sap-icon://download" press="onDataExport" id="tableParti"/>
+									<ToolbarSpacer/>
+									<!--<Link text="Export Partcipants" id='exportXslx' press="onDataExport"/>-->
+									<Button icon="sap-icon://download"  press="onDataExport" id="tableParti"/>
 								</Toolbar>
 							</headerToolbar>
-						
 							<columns>
 								<Column>
 									<Text text="{i18n>columnFirstName}"/>
@@ -144,19 +99,14 @@
 									</cells>
 								</ColumnListItem>
 							</items>
-					</Table>
-				</IconTabFilter>
-				<!--End of chnages from mgulla 03.08.2016-->
-					
-					
+						</Table>
+					</IconTabFilter>
+					<!--End of chnages from mgulla 03.08.2016-->
 				</items>
 			</IconTabBar>
 		</semantic:content>
 		<semantic:editAction>
-			<semantic:EditAction 
-				id="edit" 
-				press="onEdit"
-				enabled="{= ${EventChangeable/Changeable} >= 1 ? true : false }" />
+			<semantic:EditAction id="edit" press="onEdit" enabled="{= ${EventChangeable/Changeable} >= 1 ? true : false }"/>
 		</semantic:editAction>
 		<!-- Delete is not allowed by the OData Service -->
 		<!--
