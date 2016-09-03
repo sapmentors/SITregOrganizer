@@ -43,7 +43,7 @@
 							</headerToolbar>
 							<columns>
 								<Column>
-									<Text text="UserName"/>
+									<Text text="{i18n>detailUserName}"/>
 								</Column>
 								<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
 									<Text text="Active"/>
