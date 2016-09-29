@@ -53,7 +53,7 @@
     }
   ],
   "welcomeFile": "/webapp/index.html",
-  "sendWelcomeFileRedirect": true,
+  "sendWelcomeFileRedirect": false,
   "securityConstraints": [
        {
             "permission": "AccessApplicationDescriptor",
