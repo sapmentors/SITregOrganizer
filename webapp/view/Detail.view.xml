@@ -5,20 +5,37 @@
 	xmlns:semantic="sap.m.semantic" 
 	xmlns:f="sap.ui.layout.form" 
 	xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
-		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+	<semantic:DetailPage id="page" 
+		navButtonPress="onNavBack" 
+		showNavButton="{device>/system/phone}" 
+		title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" 
+		busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Location}" numberUnit="{i18n>detailEventID}: {ID}"
-				number="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"></ObjectHeader>
+			<ObjectHeader id="objectHeader" 
+				title="{Location}" 
+				numberUnit="{i18n>detailEventID}: {ID}"
+				number="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+					<IconTabFilter id="iconTabBarFilter1" 
+						icon="sap-icon://hint" 
+						tooltip="{i18n>detailIconTabBarInfo}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.EventForm" type="XML" />
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://employee-approvals" tooltip="{i18n>detailIconTabBarCoOrganizers}">
+					<IconTabFilter id="iconTabBarFilter2" 
+						icon="sap-icon://employee-approvals" 
+						tooltip="{i18n>detailIconTabBarCoOrganizers}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.CoOrganizerForm" type="XML" />
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter3" icon="sap-icon://group" tooltip="{i18n>deatailIconPartipitants}">
+					<IconTabFilter id="iconTabBarFilter3" 
+						icon="sap-icon://machine" 
+						tooltip="{i18n>deatailIconDevices}">
+						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.DevicesForm" type="XML" />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter4" 
+						icon="sap-icon://group" 
+						tooltip="{i18n>deatailIconPartipitants}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.PartipicantsTable" type="XML" />
 					</IconTabFilter>
 				</items>

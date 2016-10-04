@@ -23,6 +23,7 @@ sap.ui.define([
 			this._oViewModel = new JSONModel({
 				busy: false,
 				enableCreateCoOrganizer: false,
+				enableCreateDevice: false,
 				hasEditAuthorityCoOrganizer: false,
 				delay: 0
 			});
@@ -135,6 +136,31 @@ sap.ui.define([
 		},
 
 		/**
+		 * Event handler for the view save device button.
+		 * Create entry in model and save data. 
+		 * @function
+		 * @public
+		 */
+		onSaveDevice: function(oEvent) {
+			var oViewModel = this.getModel("detailView"),
+				sPath = oViewModel.getProperty("/sObjectPath"),
+				sID = this._oODataModel.getProperty(sPath + "/ID");
+			var sDeviceID = this.byId("Device_id").getValue();
+			// create entry properties
+			var oEntry = {
+				EventID: sID,
+				DeviceID: sDeviceID,
+				Active: "Y"
+			};
+			this._oODataModel.createEntry("/Devices", {
+				properties: oEntry
+			});
+			this._oODataModel.submitChanges({
+				success: this._onSaveDeviceSuccess.bind(this),
+				error: this._onSaveDeviceError.bind(this)
+			});
+		},
+		/**
 		 * Event handler for the view export partipicants as excel. 
 		 * @function
 		 * @public
@@ -179,11 +205,21 @@ sap.ui.define([
 			MessageToast.show(sMessage);
 		},
 		_onSaveCoOrganizerError: function(oError) {
-			var sMessage = this.getResourceBundle().getText("onSaveCoOrganizerSuccess");
+			var sMessage = this.getResourceBundle().getText("onSaveCoOrganizerError");
 			MessageToast.show(sMessage);
 		},
+
+		_onSaveDeviceSuccess: function(oData) {
+			this.byId("Device_id").setValue(null);
+			var sMessage = this.getResourceBundle().getText("onSaveDeviceSuccess");
+			MessageToast.show(sMessage);
+		},
+		_onSaveDeviceError: function(oError) {
+			var sMessage = this.getResourceBundle().getText("onSaveDeviceError");
+			MessageToast.show(sMessage);
+		},		
 		/**
-		 * Checks if the save button can be enabled
+		 * Checks if the save button for the CoOrganizer can be enabled
 		 * @private
 		 */
 		_validateSaveEnablementCoOrganizer: function() {
@@ -202,6 +238,26 @@ sap.ui.define([
 				}
 			}
 		},
+		/**
+		 * Checks if the save button for the Device can be enabled
+		 * @private
+		 */
+		_validateSaveEnablementDevice: function() {
+			var aInputControls = this._getFormFields(this.byId("newDevicesForm"));
+			var oControl;
+			for (var m = 0; m < aInputControls.length; m++) {
+				oControl = aInputControls[m].control;
+				if (aInputControls[m].required) {
+					var sValue = oControl.getValue();
+					if (!sValue) {
+						this._oViewModel.setProperty("/enableCreateDevice", false);
+						return;
+					} else {
+						this._oViewModel.setProperty("/enableCreateDevice", true);
+					}
+				}
+			}
+		},		
 		/**
 		 * Binds the view to the object path and expands the aggregated line items.
 		 * @function

@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<f:SimpleForm id="newDevicesForm" 
+		class="editableForm" 
+		columnsL="1" 
+		columnsM="1" 
+		editable="true" 
+		emptySpanL="4" 
+		emptySpanM="4"
+		labelSpanL="3" 
+		labelSpanM="3" 
+		layout="ResponsiveGridLayout" 
+		maxContainerCols="2" 
+		minWidth="1024"
+		visible="{detailView>/hasEditAuthorityCoOrganizer}" 
+		title="{i18n>detailAddDevice}">
+		<f:content>
+			<Label text="{i18n>detailDevice}" required="true"/>
+			<Input id="Device_id" 
+				valueLiveUpdate="true" 
+				liveChange="_validateSaveEnablementDevice" 
+				enabled="true" visible="true" maxLength="36"/>
+			<Button id="saveDevice" enabled="{detailView>/enableCreateDevice}" text="Save" press="onSaveDevice"/>
+		</f:content>
+	</f:SimpleForm>
+	<Table id="idDeviceTable" items="{ path: 'Devices', sorter: { path: 'DeviceID' } }">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>detailIconTabBarDevices}" level="H2"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>detailDevice}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Active"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{DeviceID}"/>
+					<Switch state="{= ${Active} === 'Y' ? true : false }" 
+						customTextOn="Yes" 
+						customTextOff="No"
+						enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
