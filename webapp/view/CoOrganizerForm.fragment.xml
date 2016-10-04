@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<f:SimpleForm id="newCoOrganizerSimpleForm" class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4"
+		labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+		visible="{detailView>/hasEditAuthorityCoOrganizer}" title="{i18n>detailAddCoOrganizer}">
+		<f:content>
+			<Label text="{i18n>detailUserName}" required="true"/>
+			<Input id="UserName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablementCoOrganizer" enabled="true" visible="true" maxLength="256"/>
+			<Button id="saveCoOrganizer" enabled="{detailView>/enableCreateCoOrganizer}" text="Save" press="onSaveCoOrganizer"/>
+		</f:content>
+	</f:SimpleForm>
+	<Table id="idCoOrganizerTable" items="{ path: 'CoOrganizers', sorter: { path: 'UserName' } }">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>detailIconTabBarCoOrganizers}" level="H2"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>detailUserName}"/>
+			</Column>
+			<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Active"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{UserName}"/>
+					<Switch state="{= ${Active} === 'Y' ? true : false }" customTextOn="Yes" customTextOff="No"
+						enabled="{= ${History.CreatedBy} === ${currentUser>/name} ? true : false }"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>
