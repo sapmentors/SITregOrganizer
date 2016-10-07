@@ -13,6 +13,9 @@
 		</headerToolbar>
 		<columns>
 			<Column>
+				<Text text="ID"/>
+			</Column>
+			<Column>
 				<Text text="{i18n>columnFirstName}"/>
 			</Column>
 			<Column>
@@ -31,7 +34,8 @@
 		<items>
 			<ColumnListItem type="Navigation" press="onPress">
 				<cells>
-					<ObjectIdentifier title="{FirstName}"/>
+					<ObjectIdentifier title="{ID}"/>
+					<Text text="{FirstName}"/>
 					<Text text="{LastName}"/>
 					<Text text="{EMail}"/>
 					<Text text="{MobilePhone}"/>
