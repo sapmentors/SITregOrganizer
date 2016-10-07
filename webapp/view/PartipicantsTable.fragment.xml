@@ -25,7 +25,7 @@
 				<Text text="{i18n>columnEMail}"/>
 			</Column>
 			<Column minScreenWidth="Tablet" demandPopin="false">
-				<Text text="{i18n>columnMobilePhone}"/>
+				<Text text="User-ID"/>
 			</Column>
 			<Column hAlign="End">
 				<Text text="{i18n>columnRSVP}"/>
@@ -38,7 +38,7 @@
 					<Text text="{FirstName}"/>
 					<Text text="{LastName}"/>
 					<Text text="{EMail}"/>
-					<Text text="{MobilePhone}"/>
+					<Text text="{History.CreatedBy}"/>
 					<Text text="{RSVP}"/>
 				</cells>
 			</ColumnListItem>
