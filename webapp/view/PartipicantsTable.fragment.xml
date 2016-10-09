@@ -2,7 +2,14 @@
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m">
-	<Table id="idPartipicantsTable" items="{ path: 'Participants', sorter: { path: 'FirstName' } }">
+	<Table id="idPartipicantsTable" 
+		items="{ 
+			path: 'Participants', 
+			sorter: { path: 'FirstName' },
+			parameters:{
+				expand:'Ticket'
+			}
+		}">
 		<headerToolbar>
 			<Toolbar>
 				<Title text="{i18n>deatailIconPartipitants}" level="H2"/>
@@ -30,6 +37,9 @@
 			<Column hAlign="End">
 				<Text text="{i18n>columnRSVP}"/>
 			</Column>
+			<Column hAlign="End">
+				<Text text="{i18n>columnParticipated}"/>
+			</Column>
 		</columns>
 		<items>
 			<ColumnListItem type="Navigation" press="onPress">
@@ -40,6 +50,7 @@
 					<Text text="{EMail}"/>
 					<Text text="{History.CreatedBy}"/>
 					<Text text="{RSVP}"/>
+					<Text text="{Ticket/TicketUsed}"/>
 				</cells>
 			</ColumnListItem>
 		</items>
