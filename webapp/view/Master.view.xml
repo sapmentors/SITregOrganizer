@@ -18,7 +18,7 @@
 					path: '/Events', 
 					sorter: { path: 'Location', descending: false }, 
 					parameters:{
-						expand:'EventChangeable,RegistrationNumbers,PrePostEveningEventNumbers'
+						expand:'EventChangeable,RegistrationNumbers,PrePostEveningEventNumbers,ParticipantNumbers'
 					},
 					groupHeaderFactory: '.createGroupHeader' 
 				}"

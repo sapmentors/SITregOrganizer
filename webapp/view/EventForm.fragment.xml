@@ -32,6 +32,8 @@
 			<Text text="{RegistrationNumbers/Free}"/>
 			<Label text="{i18n>RegistrationNumbersParticipants}"/>
 			<Text text="{RegistrationNumbers/Participants}"/>
+			<Label text="{i18n>ParticipantNumbersParticipated}"/>
+			<Text text="{ParticipantNumbers/Participated}"/>
 			<Label text="{i18n>PreEveningEvent}"/>
 			<Text text="{PrePostEveningEventNumbers/PreEveningEvent}"/>
 			<Label text="{i18n>PostEveningEvent}"/>
