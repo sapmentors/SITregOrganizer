@@ -12,12 +12,16 @@
 			<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
 			<Label text="{i18n>EndTime}"/>
 			<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
-			<Label text="{i18n>MaxParticipants}"/>
-			<Text text="{MaxParticipants}"/>
 			<Label text="{i18n>HomepageURL}"/>
 			<Link href="{HomepageURL}" text="{HomepageURL}" target="_blank"/>
 			<Label text="{i18n>HistoryCreatedBy}"/>
 			<Text text="{History.CreatedBy}"/>
+			<Label text="{i18n>HistoryCreatedAt}"/>
+			<Text text="{ path: 'History.CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
+			<Label text="{i18n>HistoryChangedBy}"/>
+			<Text text="{History.ChangedBy}"/>
+			<Label text="{i18n>HistoryChangedAt}"/>
+			<Text text="{ path: 'History.ChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
 			<Label text="{i18n>EventChangeable}"/>
 			<Text text="{EventChangeable/Changeable}"/>
 		</f:content>
@@ -28,16 +32,18 @@
 		title="{i18n>EventStatistics}"
 		class="editableForm sapUiSmallMarginTopBottom">
 		<f:content>
-			<Label text="{i18n>RegistrationNumbersFree}"/>
-			<Text text="{RegistrationNumbers/Free}"/>
+			<Label text="{i18n>MaxParticipants}"/>
+			<Text text="{MaxParticipants}"/>
 			<Label text="{i18n>RegistrationNumbersParticipants}"/>
 			<Text text="{RegistrationNumbers/Participants}"/>
-			<Label text="{i18n>ParticipantNumbersParticipated}"/>
-			<Text text="{ParticipantNumbers/Participated}"/>
+			<Label text="{i18n>RegistrationNumbersFree}"/>
+			<Text text="{RegistrationNumbers/Free}"/>
 			<Label text="{i18n>PreEveningEvent}"/>
 			<Text text="{PrePostEveningEventNumbers/PreEveningEvent}"/>
 			<Label text="{i18n>PostEveningEvent}"/>
 			<Text text="{PrePostEveningEventNumbers/PostEveningEvent}"/>
+			<Label text="{i18n>ParticipantNumbersParticipated}"/>
+			<Text text="{ParticipantNumbers/Participated}"/>
 		</f:content>
 	</f:SimpleForm>
 </core:FragmentDefinition>
