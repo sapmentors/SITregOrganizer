@@ -6,9 +6,20 @@
 		labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
 		visible="{detailView>/hasEditAuthorityCoOrganizer}" title="{i18n>detailAddCoOrganizer}">
 		<f:content>
-			<Label text="{i18n>detailUserName}" required="true"/>
-			<Input id="UserName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablementCoOrganizer" enabled="true" visible="true" maxLength="256"/>
-			<Button id="saveCoOrganizer" enabled="{detailView>/enableCreateCoOrganizer}" text="Save" press="onSaveCoOrganizer"/>
+			<Text
+				text="{i18n>detailUserNameDescription}" />
+			<Label text="{i18n>detailUserName}" 
+				required="true" />
+			<Input id="UserName_id" 
+				valueLiveUpdate="true" 
+				liveChange="_validateSaveEnablementCoOrganizer" 
+				enabled="true" 
+				visible="true" 
+				maxLength="256" />
+			<Button id="saveCoOrganizer" 
+				enabled="{detailView>/enableCreateCoOrganizer}" 
+				text="Save" 
+				press="onSaveCoOrganizer"/>
 		</f:content>
 	</f:SimpleForm>
 	<Table id="idCoOrganizerTable" items="{ path: 'CoOrganizers', sorter: { path: 'UserName' } }">
