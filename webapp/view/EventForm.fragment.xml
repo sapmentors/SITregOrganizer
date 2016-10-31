@@ -22,6 +22,10 @@
 			<Text text="{History.ChangedBy}"/>
 			<Label text="{i18n>HistoryChangedAt}"/>
 			<Text text="{ path: 'History.ChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
+			<Label text="{i18n>Visible}" required="false"/>
+			<Switch state="{= ${Visible} === 'Y' ? true : false }" 
+				customTextOn="Yes" 
+				customTextOff="No"/>
 			<Label text="{i18n>EventChangeable}"/>
 			<Text text="{EventChangeable/Changeable}"/>
 		</f:content>

@@ -12,8 +12,13 @@
 						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
 						value="{ path: 'ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
 					<Label text="{i18n>Location}" required="false"/>
-					<Input name="Location" id="Location_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+					<Input name="Location" id="Location_id" valueLiveUpdate="true" 
+						liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
+					<Label text="{i18n>Description}" required="false"/>
+					<Input name="Description" id="Description_id" valueLiveUpdate="true" 
+						liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
 					<Label text="{i18n>EventDate}" required="false"/>
 					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.Date'}" id="EventDate_id" enabled="true"
 						visible="true" valueFormat="yyyy-MM-dd" displayFormat="long"/>
@@ -29,6 +34,12 @@
 					<Label text="{i18n>HomepageURL}" required="false"/>
 					<Input name="HomepageURL" id="HomepageURL_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'HomepageURL', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
+					<Label text="{i18n>Visible}" required="false"/>
+					<Switch
+						id="Visible_id"
+						state="{= ${Visible} === 'Y' ? true : false }" 
+						customTextOn="Yes" 
+						customTextOff="No"/>
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>

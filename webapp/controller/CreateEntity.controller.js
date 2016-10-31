@@ -1,12 +1,15 @@
 sap.ui.define([
 	"com/sap/sapmentors/sitreg/events/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
+	"com/sap/sapmentors/sitreg/events/model/formatter",
 	"sap/m/MessageBox"
 
-], function(BaseController, JSONModel, MessageBox) {
+], function(BaseController, JSONModel, formatter, MessageBox) {
 	"use strict";
 
 	return BaseController.extend("com.sap.sapmentors.sitreg.events.controller.CreateEntity", {
+		
+		formatter: formatter,
 
 		_oBinding: {},
 
@@ -53,8 +56,17 @@ sap.ui.define([
 		 */
 		onSave: function() {
 			var that = this,
-				oModel = this.getModel();
+				oModel = this.getModel(),
+				oView = this.getView();
 
+			var oContext = oView.getBindingContext();
+			var sPathVisible = oContext.getPath() + "/Visible";
+			var bVisible = oView.byId("Visible_id").getState();
+			if(bVisible) {
+				oModel.setProperty(sPathVisible, "Y");
+			} else {
+				oModel.setProperty(sPathVisible, "N");
+			}
 			// abort if the  model has not been changed
 			if (!oModel.hasPendingChanges()) {
 				MessageBox.information(
