@@ -34,6 +34,17 @@
 					<Label text="{i18n>HomepageURL}" required="false"/>
 					<Input name="HomepageURL" id="HomepageURL_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'HomepageURL', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
+					<Label text="{i18n>Type}" />
+					<Select
+						forceSelection="false"
+						id="idEventType"
+						selectedKey="{Type}"
+						items="{
+							path: '/EventType',
+							sorter: { path: 'Description' }
+						}">
+						<core:Item key="{EventType}" text="{Description}" />
+					</Select>
 					<Label text="{i18n>Visible}" required="false"/>
 					<Switch
 						id="Visible_id"

@@ -67,6 +67,8 @@ sap.ui.define([
 			} else {
 				oModel.setProperty(sPathVisible, "N");
 			}
+			var sEventType = oView.byId("idEventType").getSelectedKey();
+			oModel.setProperty(oContext.getPath() + "/Type", sEventType);
 			// abort if the  model has not been changed
 			if (!oModel.hasPendingChanges()) {
 				MessageBox.information(
