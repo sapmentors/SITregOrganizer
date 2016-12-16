@@ -35,8 +35,26 @@ sap.ui.define([
 				// taken care of by the master list itself.
 				iOriginalBusyDelay = oList.getBusyIndicatorDelay();
 			this._oListSelector = this.getOwnerComponent().oListSelector;
-			this._oGroupSortState = new GroupSortState(oViewModel, grouper.MaxParticipants(this.getResourceBundle()));
 
+			this._oGroupSortStateMaxParticipants = new GroupSortState(
+										oViewModel, 
+										grouper.groupMaxParticipants(this.getResourceBundle())
+									);
+
+			this._oGroupSortStateLocation = new GroupSortState(
+										oViewModel,
+										grouper.groupLocation(this.getResourceBundle())
+									);
+
+			this._oGroupSortStateEventDate = new GroupSortState(
+										oViewModel, 
+										grouper.groupEventDate(this.getResourceBundle())
+									);
+
+			this._oGroupSortStateEventType = new GroupSortState(
+										oViewModel, 
+										grouper.groupEventType(this.getResourceBundle())
+									);
 			this._oList = oList;
 			// keeps the filter and search state
 			this._oListFilterState = {
@@ -128,8 +146,8 @@ sap.ui.define([
 		 * @public
 		 */
 		onSort: function(oEvent) {
-			var sKey = oEvent.getSource().getSelectedItem().getKey(),
-				aSorters = this._oGroupSortState.sort(sKey);
+			var sKey = oEvent.getSource().getSelectedItem().getKey();
+			var aSorters = this._getSorterByKey(sKey);
 
 			this._applyGroupSort(aSorters);
 		},
@@ -140,8 +158,8 @@ sap.ui.define([
 		 * @public
 		 */
 		onGroup: function(oEvent) {
-			var sKey = oEvent.getSource().getSelectedItem().getKey(),
-				aSorters = this._oGroupSortState.group(sKey);
+			var sKey = oEvent.getSource().getSelectedItem().getKey();
+			var aSorters = this._getSorterByKey(sKey);
 
 			this._applyGroupSort(aSorters);
 		},
@@ -174,21 +192,26 @@ sap.ui.define([
 		 */
 		onConfirmViewSettingsDialog: function(oEvent) {
 			var aFilterItems = oEvent.getParameters().filterItems,
+				oFilterCompoundKeys = oEvent.getParameters().filterCompoundKeys,
 				aFilters = [],
 				aCaptions = [];
 
 			// update filter state:
 			// combine the filter array and the filter string
 			aFilterItems.forEach(function(oItem) {
-				switch (oItem.getKey()) {
-					case "Filter1":
-						aFilters.push(new Filter("MaxParticipants", FilterOperator.LE, 100));
-						break;
-					case "Filter2":
-						aFilters.push(new Filter("MaxParticipants", FilterOperator.GT, 100));
-						break;
-					default:
-						break;
+				if ( oFilterCompoundKeys.MaxParticipants ) {
+					switch (oItem.getKey()) {
+						case "Filter1":
+							aFilters.push(new Filter("MaxParticipants", FilterOperator.LE, 100));
+							break;
+						case "Filter2":
+							aFilters.push(new Filter("MaxParticipants", FilterOperator.GT, 100));
+							break;
+						default:
+							break;
+					}
+				} else if ( oFilterCompoundKeys.Type ) {
+					aFilters.push(new Filter("Type", FilterOperator.EQ, oItem.getKey()));
 				}
 				aCaptions.push(oItem.getText());
 			});
@@ -294,6 +317,20 @@ sap.ui.define([
 				sortBy: "Location",
 				groupBy: "None"
 			});
+		},
+
+		_getSorterByKey: function(sKey) {
+			var aSorter = [];
+			if(sKey === "MaxParticipants") {
+				aSorter = this._oGroupSortStateMaxParticipants.group(sKey);
+			} else if (sKey === "Location") {
+				aSorter = this._oGroupSortStateLocation.group(sKey);
+			} else if (sKey === "EventDate") {
+				aSorter = this._oGroupSortStateEventDate.group(sKey);
+			} else if (sKey === "EventType") {
+				aSorter = this._oGroupSortStateEventType.group(sKey);
+			}
+			return aSorter;
 		},
 
 		/**

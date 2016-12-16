@@ -17,13 +17,13 @@ sap.ui.define([], function() {
 		 * @param oResourceBundle {sap.ui.model.resource.ResourceModel} the resource bundle of your i18n model
 		 * @returns {Function} the grouper function you can pass to your sorter
 		 */
-		MaxParticipants: function(oResourceBundle) {
+		groupMaxParticipants: function(oResourceBundle) {
 			return function(oContext) {
-				var iPrice = oContext.getProperty("MaxParticipants"),
+				var iMaxParticipants = oContext.getProperty("MaxParticipants"),
 					sKey,
 					sText;
 
-				if (iPrice <= 20) {
+				if (iMaxParticipants <= 20) {
 					sKey = "LE20";
 					sText = oResourceBundle.getText("masterGroup1Header1");
 				} else {
@@ -34,6 +34,49 @@ sap.ui.define([], function() {
 				return {
 					key: sKey,
 					text: sText
+				};
+			};
+		},
+			
+		groupEventDate : function (oResourceBundle) {
+			return function (oContext) {
+				var dEventDate = new Date(oContext.getProperty("EventDate")),
+					dNow = new Date(),
+					sKey,
+					sText;
+
+				if (dEventDate <= dNow) {
+					sKey = "LENOW";
+					sText = oResourceBundle.getText("masterGroup2Header1");
+				} else {
+					sKey = "GTNOW";
+					sText = oResourceBundle.getText("masterGroup2Header2");
+				}
+
+				return {
+					key: sKey,
+					text: sText
+				};
+			};
+		},
+		
+		groupLocation : function (oResourceBundle) {
+			return function (oContext) {
+				var sType = oContext.getProperty("Location");
+				return {
+					key: sType,
+					text: sType
+				};
+			};
+		},
+		
+		groupEventType : function (oResourceBundle) {
+			return function (oContext) {
+				var sType = oContext.getProperty("Type");
+				var sEventType = oContext.getProperty("EventType/Description");
+				return {
+					key: sType,
+					text: sEventType
 				};
 			};
 		}

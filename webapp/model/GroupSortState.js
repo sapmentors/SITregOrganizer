@@ -55,9 +55,29 @@ sap.ui.define([
 					new Sorter("MaxParticipants", false,
 						this._fnGroupFunction.bind(this))
 				);
-			} else if (sKey === "None") {
+			} else if (sKey === "EventDate") {
+				// Grouping means sorting so we set the select to the same Entity used for grouping
+				this._oViewModel.setProperty("/sortBy", "EventDate");
+
+				aSorters.push(
+					new Sorter("EventDate", false,
+						this._fnGroupFunction.bind(this))
+				);
+			} else if (sKey === "EventType") {
+				// Grouping means sorting so we set the select to the same Entity used for grouping
+				this._oViewModel.setProperty("/sortBy", "EventType");
+
+				aSorters.push(
+					new Sorter("Type", false,
+						this._fnGroupFunction.bind(this))
+				);
+			} else if (sKey === "Location") {
 				// select the default sorting again
 				this._oViewModel.setProperty("/sortBy", "Location");
+				aSorters.push(
+					new Sorter("Location", false,
+						this._fnGroupFunction.bind(this))
+				);
 			}
 
 			return aSorters;

@@ -18,7 +18,7 @@
 					path: '/Events', 
 					sorter: { path: 'Location', descending: false }, 
 					parameters:{
-						expand:'EventChangeable,RegistrationNumbers,PrePostEveningEventNumbers,ParticipantNumbers'
+						expand:'EventChangeable,RegistrationNumbers,PrePostEveningEventNumbers,ParticipantNumbers,EventType'
 					},
 					groupHeaderFactory: '.createGroupHeader' 
 				}"
@@ -34,6 +34,7 @@
 					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" 
 						press="onSelectionChange" 
 						title="{Location}"
+						numberUnit="{Description}"
 						number="{
 							path: 'EventDate',
 							type: 'sap.ui.model.type.Date',
@@ -41,6 +42,25 @@
 								style: 'medium'
 							}
 						}">
+						<attributes>
+							<ObjectAttribute text="{EventType/Description}" />
+							<ObjectAttribute 
+								id="registrationNumbers" 
+								text="{
+									parts: [
+										{path: 'MaxParticipants'},
+										{path: 'RegistrationNumbers/Participants'},
+										{path: 'RegistrationNumbers/Free'}
+									],
+									formatter : '.formatter.registrationNumbers'
+								}" />
+							<ObjectAttribute text="{
+									parts: [
+										{path: 'Participant/RSVP'}
+									],
+									formatter : '.formatter.RSVPstatus'
+								}" />
+						</attributes>
 					</ObjectListItem>
 				</items>
 			</List>
@@ -49,18 +69,52 @@
 			<semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd"/>
 		</semantic:addAction>
 		<semantic:sort>
-			<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">
-				<core:Item id="masterSort1" key="Location" text="{i18n>masterSort1}"/>
-				<core:Item id="masterSort2" key="MaxParticipants" text="{i18n>masterSort2}"/>
+			<semantic:SortSelect
+					id="sort"
+					selectedKey="{masterView>/sortBy}"
+					change="onSort">
+				<core:Item
+						id="masterSort0"
+						key="EventDate"
+						text="{i18n>masterSort0}"/>
+				<core:Item
+						id="masterSort1"
+						key="Location"
+						text="{i18n>masterSort1}"/>
+				<core:Item
+						id="masterSort2"
+						key="MaxParticipants"
+						text="{i18n>masterSort2}"/>
 			</semantic:SortSelect>
 		</semantic:sort>
+
 		<semantic:filter>
-			<semantic:FilterAction id="filter" press="onOpenViewSettings"/>
+			<semantic:FilterAction
+					id="filter"
+					press="onOpenViewSettings" />
 		</semantic:filter>
+
 		<semantic:group>
-			<semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" change="onGroup">
-				<core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/>
-				<core:Item id="masterGroup1" key="MaxParticipants" text="{i18n>masterGroup1}"/>
+			<semantic:GroupSelect
+					id="group"
+					selectedKey="{masterView>/groupBy}"
+					change="onGroup">
+				<core:Item
+						id="masterGroupNone"
+						key="None"
+						text="{i18n>masterGroupNone}"/>
+				<core:Item
+						id="masterGroup1"
+						key="MaxParticipants"
+						text="{i18n>masterGroup1}"/>
+				<core:Item
+						id="masterGroup2"
+						key="EventDate"
+						text="{i18n>masterGroup2}"/>
+				<core:Item
+						id="masterGroup3"
+						key="EventType"
+						text="{i18n>masterGroup3}"/>
 			</semantic:GroupSelect>
 		</semantic:group>
 	</semantic:MasterPage>
