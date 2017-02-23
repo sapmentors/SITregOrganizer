@@ -1,26 +1,234 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
 	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
-		<Schema Namespace="com.sap.sapmentors.sitreg.odataorganizer.service" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
-			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="com.sap.sapmentors.sitreg.odataorganizer.service">
 			<EntityType Name="EventsType">
-				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="Location" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="EventDate" Type="Edm.DateTime" Nullable="false"/><Property Name="StartTime" Type="Edm.DateTime"/><Property Name="EndTime" Type="Edm.DateTime"/><Property Name="MaxParticipants" Type="Edm.Int32" Nullable="false"/><Property Name="HomepageURL" Type="Edm.String" MaxLength="256"/><Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.CreatedAt" Type="Edm.DateTime"/><Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.ChangedAt" Type="Edm.DateTime"/><NavigationProperty Name="Participants" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Events_ParticipantsType"
-					FromRole="EventsPrincipal" ToRole="ParticipantsDependent"/><NavigationProperty Name="CoOrganizers" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Events_CoOrganizersType"
-					FromRole="EventsPrincipal" ToRole="CoOrganizersDependent"/><NavigationProperty Name="EventChangeable" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ChangeableType"
-					FromRole="EventsPrincipal" ToRole="EventChangeableDependent"/></EntityType>
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Location" Type="Edm.String" Nullable="false" MaxLength="100"/>
+				<Property Name="EventDate" Type="Edm.DateTime" Nullable="false"/>
+				<Property Name="StartTime" Type="Edm.DateTime"/>
+				<Property Name="EndTime" Type="Edm.DateTime"/>
+				<Property Name="MaxParticipants" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="HomepageURL" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedAt" Type="Edm.DateTime"/>
+				<Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.ChangedAt" Type="Edm.DateTime"/>
+				<Property Name="Description" Type="Edm.String" MaxLength="100"/>
+				<Property Name="Type" Type="Edm.String" MaxLength="1"/>
+				<Property Name="Visible" Type="Edm.String" MaxLength="1"/>
+				<NavigationProperty Name="Participants" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Events_ParticipantsType"
+					FromRole="EventsPrincipal" ToRole="ParticipantsDependent"/>
+				<NavigationProperty Name="CoOrganizers" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Events_CoOrganizersType"
+					FromRole="EventsPrincipal" ToRole="CoOrganizersDependent"/>
+				<NavigationProperty Name="Devices" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Events_DevicesType"
+					FromRole="EventsPrincipal" ToRole="DevicesDependent"/>
+				<NavigationProperty Name="EventChangeable" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ChangeableType"
+					FromRole="EventsPrincipal" ToRole="EventChangeableDependent"/>
+				<NavigationProperty Name="RegistrationNumbers" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_RegistrationNumbersType"
+					FromRole="EventsPrincipal" ToRole="RegistrationNumbersDependent"/>
+				<NavigationProperty Name="PrePostEveningEventNumbers"
+					Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_PrePostEveningEventNumbersType" FromRole="EventsPrincipal"
+					ToRole="PrePostEveningEventNumbersDependent"/>
+				<NavigationProperty Name="ParticipantNumbers" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ParticipantNumbersType"
+					FromRole="EventsPrincipal" ToRole="ParticipantNumbersDependent"/>
+				<NavigationProperty Name="EventType" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Event_TypeType"
+					FromRole="EventsPrincipal" ToRole="EventTypeDependent"/>
+			</EntityType>
+			<EntityType Name="EventTypeType">
+				<Key>
+					<PropertyRef Name="EventType"/>
+				</Key>
+				<Property Name="EventType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="Description" Type="Edm.String" MaxLength="250"/>
+			</EntityType>
 			<EntityType Name="CoOrganizersType">
-				<Key><PropertyRef Name="EventID"/><PropertyRef Name="UserName"/></Key><Property Name="EventID" Type="Edm.Int32" Nullable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="256"/><Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.CreatedAt" Type="Edm.DateTime"/><Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.ChangedAt" Type="Edm.DateTime"/><Property Name="Active" Type="Edm.String" MaxLength="1"/></EntityType>
+				<Key>
+					<PropertyRef Name="EventID"/>
+					<PropertyRef Name="UserName"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+				<Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedAt" Type="Edm.DateTime"/>
+				<Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.ChangedAt" Type="Edm.DateTime"/>
+				<Property Name="Active" Type="Edm.String" MaxLength="1"/>
+			</EntityType>
+			<EntityType Name="DevicesType">
+				<Key>
+					<PropertyRef Name="EventID"/>
+					<PropertyRef Name="DeviceID"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="DeviceID" Type="Edm.String" Nullable="false" MaxLength="36"/>
+				<Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedAt" Type="Edm.DateTime"/>
+				<Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.ChangedAt" Type="Edm.DateTime"/>
+				<Property Name="Active" Type="Edm.String" MaxLength="1"/>
+			</EntityType>
 			<EntityType Name="EventChangeableType">
-				<Key><PropertyRef Name="EventID"/></Key><Property Name="EventID" Type="Edm.Int32" Nullable="false"/><Property Name="Changeable" Type="Edm.Int32"/></EntityType>
+				<Key>
+					<PropertyRef Name="EventID"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Changeable" Type="Edm.Int64" Nullable="false"/>
+			</EntityType>
 			<EntityType Name="ParticipantsType">
-				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="EventID" Type="Edm.Int32" Nullable="false"/><Property Name="RegistrationTime" Type="Edm.DateTime"/><Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="EMail" Type="Edm.String" Nullable="false" MaxLength="256"/><Property Name="MobilePhone" Type="Edm.String" MaxLength="25"/><Property Name="BioURL" Type="Edm.String" MaxLength="256"/><Property Name="Twitter" Type="Edm.String" MaxLength="15"/><Property Name="RSVP" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="PreEveningEvent" Type="Edm.String" MaxLength="1"/><Property Name="PostEveningEvent" Type="Edm.String" MaxLength="1"/><Property Name="RelationToSAP" Type="Edm.String" MaxLength="1"/><Property Name="Receipt" Type="Edm.String" MaxLength="1"/><Property Name="ReceiptCompany" Type="Edm.String" MaxLength="256"/><Property Name="ReceiptAddress" Type="Edm.String" MaxLength="2147483647"/><Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.CreatedAt" Type="Edm.DateTime"/><Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/><Property Name="History.ChangedAt" Type="Edm.DateTime"/></EntityType>
-			<Association Name="Events_CoOrganizersType"><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.CoOrganizersType" Role="CoOrganizersDependent" Multiplicity="*"/></Association>
-			<Association Name="Event_ChangeableType"><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventChangeableType" Role="EventChangeableDependent" Multiplicity="1"/></Association>
-			<Association Name="Events_ParticipantsType"><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/><End Type="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantsType" Role="ParticipantsDependent" Multiplicity="*"/></Association>
-			<EntityContainer Name="service" m:IsDefaultEntityContainer="true"><EntitySet Name="Events" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType"/><EntitySet Name="CoOrganizers" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.CoOrganizersType"/><EntitySet Name="EventChangeable" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.EventChangeableType"/><EntitySet Name="Participants" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantsType"/>
-				<AssociationSet Name="Events_CoOrganizers" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Events_CoOrganizersType"><End Role="EventsPrincipal" EntitySet="Events"/><End Role="CoOrganizersDependent" EntitySet="CoOrganizers"/></AssociationSet>
-				<AssociationSet Name="Event_Changeable" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ChangeableType"><End Role="EventsPrincipal" EntitySet="Events"/><End Role="EventChangeableDependent" EntitySet="EventChangeable"/></AssociationSet>
-				<AssociationSet Name="Events_Participants" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Events_ParticipantsType"><End Role="EventsPrincipal" EntitySet="Events"/><End Role="ParticipantsDependent" EntitySet="Participants"/></AssociationSet>
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="RegistrationTime" Type="Edm.DateTime"/>
+				<Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="100"/>
+				<Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="100"/>
+				<Property Name="EMail" Type="Edm.String" Nullable="false" MaxLength="256"/>
+				<Property Name="MobilePhone" Type="Edm.String" MaxLength="25"/>
+				<Property Name="BioURL" Type="Edm.String" MaxLength="256"/>
+				<Property Name="Twitter" Type="Edm.String" MaxLength="15"/>
+				<Property Name="RSVP" Type="Edm.String" Nullable="false" MaxLength="1"/>
+				<Property Name="PreEveningEvent" Type="Edm.String" MaxLength="1"/>
+				<Property Name="PostEveningEvent" Type="Edm.String" MaxLength="1"/>
+				<Property Name="RelationToSAP" Type="Edm.String" MaxLength="1"/>
+				<Property Name="Receipt" Type="Edm.String" MaxLength="1"/>
+				<Property Name="ReceiptCompany" Type="Edm.String" MaxLength="256"/>
+				<Property Name="ReceiptAddress" Type="Edm.String" MaxLength="2147483647"/>
+				<Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedAt" Type="Edm.DateTime"/>
+				<Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.ChangedAt" Type="Edm.DateTime"/>
+				<NavigationProperty Name="Ticket" Relationship="com.sap.sapmentors.sitreg.odataorganizer.service.Participant_TicketType"
+					FromRole="ParticipantsPrincipal" ToRole="TicketDependent"/>
+			</EntityType>
+			<EntityType Name="RegistrationNumbersType">
+				<Key>
+					<PropertyRef Name="EventID"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Free" Type="Edm.Int32"/>
+				<Property Name="Participants" Type="Edm.Int32"/>
+			</EntityType>
+			<EntityType Name="PrePostEveningEventNumbersType">
+				<Key>
+					<PropertyRef Name="EventID"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="PreEveningEvent" Type="Edm.Int64"/>
+				<Property Name="PostEveningEvent" Type="Edm.Int64"/>
+			</EntityType>
+			<EntityType Name="ParticipantNumbersType">
+				<Key>
+					<PropertyRef Name="EventID"/>
+				</Key>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Participated" Type="Edm.Int32"/>
+			</EntityType>
+			<EntityType Name="TicketType">
+				<Key>
+					<PropertyRef Name="ParticipantID"/>
+				</Key>
+				<Property Name="ParticipantID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="EventID" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="TicketUsed" Type="Edm.String" MaxLength="1"/>
+				<Property Name="SHA256HASH" Type="Edm.Binary"/>
+				<Property Name="History.CreatedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.CreatedAt" Type="Edm.DateTime"/>
+				<Property Name="History.ChangedBy" Type="Edm.String" MaxLength="256"/>
+				<Property Name="History.ChangedAt" Type="Edm.DateTime"/>
+			</EntityType>
+			<Association Name="Event_TypeType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="0..1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventTypeType" Role="EventTypeDependent" Multiplicity="1"/>
+			</Association>
+			<Association Name="Events_CoOrganizersType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.CoOrganizersType" Role="CoOrganizersDependent" Multiplicity="*"/>
+			</Association>
+			<Association Name="Events_DevicesType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.DevicesType" Role="DevicesDependent" Multiplicity="*"/>
+			</Association>
+			<Association Name="Event_ChangeableType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventChangeableType" Role="EventChangeableDependent" Multiplicity="1"/>
+			</Association>
+			<Association Name="Events_ParticipantsType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantsType" Role="ParticipantsDependent" Multiplicity="*"/>
+			</Association>
+			<Association Name="Event_RegistrationNumbersType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.RegistrationNumbersType" Role="RegistrationNumbersDependent" Multiplicity="1"/>
+			</Association>
+			<Association Name="Event_PrePostEveningEventNumbersType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.PrePostEveningEventNumbersType" Role="PrePostEveningEventNumbersDependent"
+					Multiplicity="1"/>
+			</Association>
+			<Association Name="Event_ParticipantNumbersType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType" Role="EventsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantNumbersType" Role="ParticipantNumbersDependent" Multiplicity="1"/>
+			</Association>
+			<Association Name="Participant_TicketType">
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantsType" Role="ParticipantsPrincipal" Multiplicity="1"/>
+				<End Type="com.sap.sapmentors.sitreg.odataorganizer.service.TicketType" Role="TicketDependent" Multiplicity="1"/>
+			</Association>
+			<EntityContainer Name="service" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Events" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.EventsType"/>
+				<EntitySet Name="EventType" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.EventTypeType"/>
+				<EntitySet Name="CoOrganizers" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.CoOrganizersType"/>
+				<EntitySet Name="Devices" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.DevicesType"/>
+				<EntitySet Name="EventChangeable" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.EventChangeableType"/>
+				<EntitySet Name="Participants" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantsType"/>
+				<EntitySet Name="RegistrationNumbers" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.RegistrationNumbersType"/>
+				<EntitySet Name="PrePostEveningEventNumbers" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.PrePostEveningEventNumbersType"/>
+				<EntitySet Name="ParticipantNumbers" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.ParticipantNumbersType"/>
+				<EntitySet Name="Ticket" EntityType="com.sap.sapmentors.sitreg.odataorganizer.service.TicketType"/>
+				<AssociationSet Name="Event_Type" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_TypeType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="EventTypeDependent" EntitySet="EventType"/>
+				</AssociationSet>
+				<AssociationSet Name="Events_CoOrganizers" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Events_CoOrganizersType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="CoOrganizersDependent" EntitySet="CoOrganizers"/>
+				</AssociationSet>
+				<AssociationSet Name="Events_Devices" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Events_DevicesType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="DevicesDependent" EntitySet="Devices"/>
+				</AssociationSet>
+				<AssociationSet Name="Event_Changeable" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ChangeableType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="EventChangeableDependent" EntitySet="EventChangeable"/>
+				</AssociationSet>
+				<AssociationSet Name="Events_Participants" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Events_ParticipantsType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="ParticipantsDependent" EntitySet="Participants"/>
+				</AssociationSet>
+				<AssociationSet Name="Event_RegistrationNumbers"
+					Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_RegistrationNumbersType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="RegistrationNumbersDependent" EntitySet="RegistrationNumbers"/>
+				</AssociationSet>
+				<AssociationSet Name="Event_PrePostEveningEventNumbers"
+					Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_PrePostEveningEventNumbersType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="PrePostEveningEventNumbersDependent" EntitySet="PrePostEveningEventNumbers"/>
+				</AssociationSet>
+				<AssociationSet Name="Event_ParticipantNumbers" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Event_ParticipantNumbersType">
+					<End Role="EventsPrincipal" EntitySet="Events"/>
+					<End Role="ParticipantNumbersDependent" EntitySet="ParticipantNumbers"/>
+				</AssociationSet>
+				<AssociationSet Name="Participant_Ticket" Association="com.sap.sapmentors.sitreg.odataorganizer.service.Participant_TicketType">
+					<End Role="ParticipantsPrincipal" EntitySet="Participants"/>
+					<End Role="TicketDependent" EntitySet="Ticket"/>
+				</AssociationSet>
 			</EntityContainer>
 		</Schema>
 	</edmx:DataServices>
