@@ -20,14 +20,10 @@
 						liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
 					<Label text="{i18n>EventDate}" required="false"/>
-					<DatePicker 
-						id="EventDate_id" 
-						name="EventDate" 
-						value="{ path: 'EventDate', type: 'sap.ui.model.type.Date'}" 
-						enabled="true"
-						visible="true" 
-						valueFormat="yyyy-MM-dd" 
-						displayFormat="long"/>
+
+					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MM-yyyy' , UTC:true}}" id="EventDate_id" enabled="true"
+						visible="true" valueFormat="yyyy-MM-dd" displayFormat="long"/>
+
 					<Label text="{i18n>StartTime}" required="false"/>
 					<TimePicker id="StartTime_id" value="{ path: 'StartTime', type: 'sap.ui.model.type.Time'}" valueFormat="HH:mm" displayFormat="HH:mm"
 						placeholder="{i18n>StartTime}"/>
