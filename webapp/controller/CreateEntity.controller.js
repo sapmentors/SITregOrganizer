@@ -69,13 +69,6 @@ sap.ui.define([
 			}
 			var sEventType = oView.byId("idEventType").getSelectedKey();
 			oModel.setProperty(oContext.getPath() + "/Type", sEventType);
-			// Adjust Date to Timezone
-			var timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000; // Offset returns minutes * 60 seconds * 1000 ms
-			var noon = 12 * 60 * 60 * 1000; // Use noon in the Timezone (12 hours * 60 minutes * 60 seconds * 1000 ms)
-			timezoneOffset = noon - timezoneOffset;
-			var EventDate = oModel.getProperty(oContext.getPath() + "/EventDate");
-			EventDate.setTime(EventDate.getTime() + timezoneOffset); 
-			oModel.setProperty(oContext.getPath() + "/EventDate", EventDate);
 			// abort if the  model has not been changed
 			if (!oModel.hasPendingChanges()) {
 				MessageBox.information(
