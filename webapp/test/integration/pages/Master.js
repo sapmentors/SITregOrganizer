@@ -358,13 +358,6 @@ sap.ui.define([
 					});
 				},
 
-				theListShouldContainOnlyFormattedUnitNumbers: function() {
-					return this.theUnitNumbersShouldHaveTwoDecimals("sap.m.ObjectListItem",
-						sViewName,
-						"Numbers in ObjectListItems numbers are properly formatted",
-						"List has no entries which can be checked for their formatting");
-				},
-
 				theListHeaderDisplaysZeroHits: function() {
 					return this.waitFor({
 						viewName: sViewName,

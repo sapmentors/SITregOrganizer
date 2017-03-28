@@ -16,8 +16,7 @@ sap.ui.define([
 		Then.onTheMasterPage.iShouldSeeTheList().
 		and.theListShouldHaveAllEntries().
 		and.theHeaderShouldDisplayAllEntries().
-		and.theAddButtonShouldBeEnabled().
-		and.theListShouldContainOnlyFormattedUnitNumbers();
+		and.theAddButtonShouldBeEnabled();
 	});
 
 	opaTest("Search for the First object should deliver results that contain the firstObject in the name", function(Given, When, Then) {
