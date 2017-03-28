@@ -30,13 +30,13 @@ sap.ui.define([
 		};
 	}
 
-	QUnit.test("Should group a price lesser equal 20", function(assert) {
+	QUnit.test("Should group by MaxParticipants lesser equal 20", function(assert) {
 		// Arrange
-		var oContextObject = createContextObject(17.2),
+		var oContextObject = createContextObject(17),
 			oGrouperReturn;
 
 		// System under test
-		var fnGroup = Grouper.MaxParticipants(this._oResourceModel.getResourceBundle());
+		var fnGroup = Grouper.groupMaxParticipants(this._oResourceModel.getResourceBundle());
 
 		// Assert
 		oGrouperReturn = fnGroup(oContextObject);
@@ -45,13 +45,13 @@ sap.ui.define([
 			"The group header is as expected for a low value");
 	});
 
-	QUnit.test("Should group the price", function(assert) {
+	QUnit.test("Should group the MaxParticipants", function(assert) {
 		// Arrange
-		var oContextObject = createContextObject(55.5),
+		var oContextObject = createContextObject(55),
 			oGrouperReturn;
 
 		// System under test
-		var fnGroup = Grouper.MaxParticipants(this._oResourceModel.getResourceBundle());
+		var fnGroup = Grouper.groupMaxParticipants(this._oResourceModel.getResourceBundle());
 
 		// Assert
 		oGrouperReturn = fnGroup(oContextObject);
