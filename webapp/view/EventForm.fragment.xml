@@ -8,6 +8,8 @@
 		title="{i18n>EventMasterData}"
 		class="editableForm sapUiSmallMarginTopBottom">
 		<f:content>
+			<Label text="{i18n>EventDate}"/>
+			<Text text="{ path: 'EventDate', type: 'sap.ui.model.odata.type.DateTime' }"/>
 			<Label text="{i18n>StartTime}"/>
 			<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
 			<Label text="{i18n>EndTime}"/>
