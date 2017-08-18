@@ -36,7 +36,7 @@
 					<Label text="{i18n>HomepageURL}" required="false"/>
 					<Input name="HomepageURL" id="HomepageURL_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'HomepageURL', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
-					<Label text="{i18n>Type}" />
+					<Label text="{i18n>masterFilterNameType}" />
 					<Select
 						forceSelection="false"
 						id="idEventType"
