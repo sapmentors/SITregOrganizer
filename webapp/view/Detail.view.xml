@@ -30,11 +30,13 @@
 						tooltip="{i18n>detailIconTabBarCoOrganizers}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.CoOrganizerForm" type="XML" />
 					</IconTabFilter>
+					<!--
 					<IconTabFilter id="iconTabBarFilter3" 
 						icon="sap-icon://iphone" 
 						tooltip="{i18n>deatailIconDevices}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.DevicesForm" type="XML" />
 					</IconTabFilter>
+					-->
 					<IconTabFilter id="iconTabBarFilter4" 
 						icon="sap-icon://group" 
 						tooltip="{i18n>deatailIconPartipitants}">
