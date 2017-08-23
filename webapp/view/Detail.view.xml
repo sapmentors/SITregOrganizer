@@ -53,12 +53,16 @@
 		<semantic:customFooterContent>
 			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
 		</semantic:customFooterContent>
-		-->
+		<!-- Share is not needed here -->
+		<!--
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
+		<!-- We don't use JAM -->
+		<!--
 		<semantic:shareInJamAction>
 			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
 		</semantic:shareInJamAction>
+		-->
 	</semantic:DetailPage>
 </mvc:View>
