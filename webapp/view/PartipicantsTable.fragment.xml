@@ -5,7 +5,7 @@
 	<Table id="idPartipicantsTable" 
 		items="{ 
 			path: 'Participants', 
-			sorter: { path: 'FirstName' },
+			sorter: { path: 'ID' },
 			parameters:{
 				expand:'Ticket'
 			}
@@ -14,8 +14,16 @@
 			<Toolbar>
 				<Title text="{i18n>deatailIconPartipitants}" level="H2"/>
 				<ToolbarSpacer/>
-				<!--<Link text="Export Partcipants" id='exportXslx' press="onDataExport"/>-->
-				<Button icon="sap-icon://download"  press="onDataExport" id="tableParti"/>
+				<Button 
+					icon="sap-icon://download"
+					tooltip="{i18n>exportToExcel}"
+					press="onDataExport"
+					text="{i18n>exportToExcel}"
+					id="tableParti" />
+				<Button 
+					tooltip="View Settings" 
+					icon="sap-icon://drop-down-list" 
+					press="handleViewSettingsDialogButtonPressed" />
 			</Toolbar>
 		</headerToolbar>
 		<columns>

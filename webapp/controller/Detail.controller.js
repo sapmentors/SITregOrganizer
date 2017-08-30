@@ -11,6 +11,7 @@ sap.ui.define([
 	return BaseController.extend("com.sap.sapmentors.sitreg.events.controller.Detail", {
 
 		formatter: formatter,
+		_oDialog: null,
 
 		/* =========================================================== */
 		/* lifecycle methods                                           */
@@ -34,6 +35,16 @@ sap.ui.define([
 			this._oODataModel = this.getOwnerComponent().getModel();
 			this._oResourceBundle = this.getResourceBundle();
 			this._oViewModel.setProperty("/hasEditAuthorityCoOrganizer", this.hasEditAuthorization());
+
+			this.mGroupFunctions = {
+				RSVP: function(oContext) {
+					var name = oContext.getProperty("RSVP");
+					return {
+						key: name,
+						text: name
+					};
+				}
+			};			
 		},
 
 		/* =========================================================== */
@@ -197,6 +208,50 @@ sap.ui.define([
 			/*var hasAuth = this.History.CreatedBy === //this.getModel("currentUser").getProperty("/name");*/
 			var hasAuth = true;
 			return hasAuth;
+		},
+
+		handleViewSettingsDialogButtonPressed: function (oEvent) {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment(
+									"com.sap.sapmentors.sitreg.events.view.ParticipantsTableDialog", 
+									this
+								);
+			}
+			// toggle compact style
+			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
+			this.getView().addDependent(this._oDialog);
+			this._oDialog.open();
+		},
+
+		handleConfirm: function(oEvent) {
+ 
+			var oView = this.getView();
+			var oTable = oView.byId("idPartipicantsTable");
+ 
+			var mParams = oEvent.getParameters();
+			var oBinding = oTable.getBinding("items");
+ 
+			// apply sorter to binding
+			// (grouping comes before sorting)
+			var aSorters = [];
+			var sPath;
+			var bDescending;
+			if (mParams.groupItem) {
+				sPath = mParams.groupItem.getKey();
+				bDescending = mParams.groupDescending;
+				var vGroup = this.mGroupFunctions[sPath];
+				aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
+			}
+			sPath = mParams.sortItem.getKey();
+			bDescending = mParams.sortDescending;
+			aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
+			oBinding.sort(aSorters);
+		},
+		
+		onExit : function () {
+			if (this._oDialog) {
+				this._oDialog.destroy();
+			}
 		},
 
 		_onSaveCoOrganizerSuccess: function(oData) {
