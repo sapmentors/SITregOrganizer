@@ -8,6 +8,18 @@ sap.ui.define([], function() {
 		    	return oResourceBundle.getText("masterRegistrationNumbers", [iFree, iParticipants, iMaxParticipants]);
 			}
 		},
+
+		RSVPstatus : function (sValue) {
+			var oResourceBundle = this.getModel("i18n").getResourceBundle();
+			switch(sValue) {
+    			case "Y":
+		    		return oResourceBundle.getText("yes");
+			    case "N":
+		    		return oResourceBundle.getText("no");
+			    case "W":
+		    		return oResourceBundle.getText("waiting");
+			}
+		},
 		/**
 		 * Rounds the currency value to 2 digits
 		 *
