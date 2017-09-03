@@ -57,6 +57,8 @@
 			<Text text="{RegistrationNumbers/Participants}"/>
 			<Label text="{i18n>RegistrationNumbersFree}"/>
 			<Text text="{RegistrationNumbers/Free}"/>
+			<Label text="{i18n>Waiting}"/>
+			<Text text="{RegistrationNumbers/Waiting}"/>
 			<Label text="{i18n>PreEveningEvent}"/>
 			<Text text="{PrePostEveningEventNumbers/PreEveningEvent}"/>
 			<Label text="{i18n>PostEveningEvent}"/>
