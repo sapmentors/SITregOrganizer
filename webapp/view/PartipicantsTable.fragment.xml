@@ -57,8 +57,18 @@
 					<Text text="{LastName}"/>
 					<Text text="{EMail}"/>
 					<Text text="{History.CreatedBy}"/>
-					<Text text="{RSVP}"/>
-					<Text text="{Ticket/TicketUsed}"/>
+					<Text text="{
+									parts: [
+										{path: 'RSVP'}
+									],
+									formatter : '.formatter.RSVPstatus'
+								}"/>
+					<Text text="{
+									parts: [
+										{path: 'Ticket/TicketUsed'}
+									],
+									formatter : '.formatter.RSVPstatus'
+								}"/>
 				</cells>
 			</ColumnListItem>
 		</items>
