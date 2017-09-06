@@ -114,6 +114,13 @@ sap.ui.define([
 		/* =========================================================== */
 		/* Internal functions
 		/* =========================================================== */
+		
+		getRandomInt: function(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+		},
+		
 		/**
 		 * Navigates back in the browser history, if the entry was created by this app.
 		 * If not, it navigates to the Details page
@@ -187,7 +194,11 @@ sap.ui.define([
 
 			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitle"));
 			this._oViewModel.setProperty("/mode", "create");
+			var oProperties = {
+				ID: this.getRandomInt(1, 10000000)
+			};
 			var oContext = this._oODataModel.createEntry("Events", {
+				properties: oProperties,
 				success: this._fnEntityCreated.bind(this),
 				error: this._fnEntityCreationFailed.bind(this)
 			});
