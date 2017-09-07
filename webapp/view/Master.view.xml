@@ -9,6 +9,13 @@
 				</contentMiddle>
 			</Bar>
 		</semantic:subHeader>
+		<semantic:customHeaderContent>
+			<Button 
+				id="about"
+				icon="sap-icon://approvals" 
+				tooltip="Organizers to be approved"
+				press="onOrganizerApproval"/>
+		</semantic:customHeaderContent>		
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
