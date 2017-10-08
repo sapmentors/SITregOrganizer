@@ -11,9 +11,17 @@
 			<Label text="{i18n>EventDate}"/>
 			<Text text="{ path: 'EventDate', type: 'sap.ui.model.odata.type.DateTime' }"/>
 			<Label text="{i18n>StartTime}"/>
-			<Text text="{ path: 'StartTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
+			<Text text="{ 
+				path: 'StartTime', 
+				type: 'sap.ui.model.type.Time', 
+				formatOptions: { pattern: 'HH:mm', UTC:true }
+			}"/>
 			<Label text="{i18n>EndTime}"/>
-			<Text text="{ path: 'EndTime', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'HH:mm'} }"/>
+			<Text text="{ 
+				path: 'EndTime', 
+				type: 'sap.ui.model.type.Time', 
+				formatOptions: { pattern: 'HH:mm', UTC:true } 
+			}"/>
 			<Label text="{i18n>HomepageURL}"/>
 			<Link href="{HomepageURL}" text="{HomepageURL}" target="_blank"/>
 			<Label text="{i18n>HistoryCreatedBy}"/>

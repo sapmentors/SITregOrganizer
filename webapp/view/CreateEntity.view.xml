@@ -3,15 +3,26 @@
 	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
 		<semantic:content>
-			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
-				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+			<f:SimpleForm
+				class="editableForm" 
+				columnsL="1" 
+				columnsM="1" 
+				editable="true" 
+				emptySpanL="4" 
+				emptySpanM="4" 
+				id="newEntitySimpleForm"
+				labelSpanL="3" 
+				labelSpanM="3" 
+				layout="ResponsiveGridLayout" 
+				maxContainerCols="2" 
+				minWidth="1024"
 				title="{= ${viewModel>/mode} === 'edit'? ${i18n>editViewTitle} : ${i18n>createViewTitle} }">
 				<f:content>
 					<Label text="ID" required="true"/>
 					<Input name="ID" id="ID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
 						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
 						value="{ path: 'ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
-					<Label text="{i18n>Location}" required="false"/>
+					<Label text="{i18n>Location}" required="true"/>
 					<Input name="Location" id="Location_id" valueLiveUpdate="true" 
 						liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
@@ -19,23 +30,63 @@
 					<Input name="Description" id="Description_id" valueLiveUpdate="true" 
 						liveChange="_validateSaveEnablement" enabled="true" visible="true"
 						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
-					<Label text="{i18n>EventDate}" required="false"/>
-
-					<DatePicker name="EventDate" value="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MM-yyyy' , UTC:true}}" id="EventDate_id" enabled="true"
-						visible="true" valueFormat="yyyy-MM-dd" displayFormat="long"/>
-
-					<Label text="{i18n>StartTime}" required="false"/>
-					<TimePicker id="StartTime_id" value="{ path: 'StartTime', type: 'sap.ui.model.type.Time'}" valueFormat="HH:mm" displayFormat="HH:mm"
+					<Label text="{i18n>EventDate}" required="true"/>
+					<DatePicker 
+						name="EventDate" 
+						value="{ 
+							path: 'EventDate', 
+							type: 'sap.ui.model.type.Date', 
+							formatOptions: { UTC:true }
+						}" 
+						id="EventDate_id" 
+						enabled="true"
+						visible="true" 
+						valueFormat="yyyy-MM-dd" 
+						displayFormat="long"/>
+					<Label text="{i18n>StartTime}" required="true"/>
+					<DateTimePicker 
+						id="StartTime_id" 
+						value="{ 
+							path: 'StartTime', 
+							type: 'sap.ui.model.type.DateTime', 
+							formatOptions: { UTC:true }
+						}" 
+						valueFormat="HH:mm" 
+						displayFormat="HH:mm"
 						placeholder="{i18n>StartTime}"/>
-					<Label text="{i18n>EndTime}" required="false"/>
-					<TimePicker id="EndTime_id" value="{ path: 'EndTime', type: 'sap.ui.model.type.Time'}" valueFormat="HH:mm" displayFormat="HH:mm"
+					<Label text="{i18n>EndTime}" required="true"/>
+					<DateTimePicker 
+						id="EndTime_id" 
+						value="{ 
+							path: 'EndTime', 
+							type: 'sap.ui.model.type.DateTime', 
+							formatOptions: { UTC:true }
+						}" 
+						valueFormat="HH:mm" 
+						displayFormat="HH:mm"
 						placeholder="{i18n>EndTime}"/>
-					<Label text="{i18n>MaxParticipants}" required="false"/>
-					<Input name="MaxParticipants" id="MaxParticipants_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
-						visible="true" value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }"/>
+					<Label text="{i18n>MaxParticipants}" required="true"/>
+					<Input 
+						name="MaxParticipants" 
+						id="MaxParticipants_id" 
+						valueLiveUpdate="true" 
+						liveChange="_validateSaveEnablement" 
+						enabled="true"
+						visible="true" 
+						value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }"/>
 					<Label text="{i18n>HomepageURL}" required="false"/>
-					<Input name="HomepageURL" id="HomepageURL_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
-						value="{ path: 'HomepageURL', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
+					<Input 
+						name="HomepageURL" 
+						id="HomepageURL_id" 
+						valueLiveUpdate="true" 
+						liveChange="_validateSaveEnablement" 
+						enabled="true" 
+						visible="true"
+						value="{
+							path: 'HomepageURL', 
+							type: 'sap.ui.model.odata.type.String', 
+							constraints:{ maxLength:256 } 
+						}"/>
 					<Label text="{i18n>masterFilterNameType}" />
 					<Select
 						forceSelection="false"
