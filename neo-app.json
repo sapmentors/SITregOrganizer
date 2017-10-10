@@ -54,8 +54,6 @@
       }
     }
   ],
-  "welcomeFile": "/webapp/index.html",
-  "sendWelcomeFileRedirect": false,
   "securityConstraints": [
        {
             "permission": "AccessApplicationDescriptor",
