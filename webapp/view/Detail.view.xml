@@ -15,7 +15,11 @@
 			<ObjectHeader id="objectHeader" 
 				title="{Description}" 
 				numberUnit="{i18n>detailEventID}: {ID}"
-				number="{ path: 'EventDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }">
+				number="{ 
+					path: 'EventDate', 
+					type: 'sap.ui.model.type.Date', 
+					formatOptions: { style: 'medium' } 
+				}">
 				<ObjectAttribute text="{Location}" />
 			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">

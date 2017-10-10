@@ -9,7 +9,11 @@
 		class="editableForm sapUiSmallMarginTopBottom">
 		<f:content>
 			<Label text="{i18n>EventDate}"/>
-			<Text text="{ path: 'EventDate', type: 'sap.ui.model.odata.type.DateTime' }"/>
+			<Text text="{ 
+							path: 'EventDate', 
+							type: 'sap.ui.model.type.Date', 
+							formatOptions: { style: 'medium' } 
+						}"/>
 			<Label text="{i18n>StartTime}"/>
 			<Text text="{ 
 				path: 'StartTime', 
