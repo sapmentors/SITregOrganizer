@@ -60,6 +60,7 @@ sap.ui.define([
 				oView = this.getView();
 
 			var oContext = oView.getBindingContext();
+			// Visible
 			var sPathVisible = oContext.getPath() + "/Visible";
 			var bVisible = oView.byId("Visible_id").getState();
 			if(bVisible) {
@@ -67,6 +68,23 @@ sap.ui.define([
 			} else {
 				oModel.setProperty(sPathVisible, "N");
 			}
+			// HasPreEveningEvent
+			var sPathHasPreEveningEvent = oContext.getPath() + "/HasPreEveningEvent";
+			var bHasPreEveningEvent = oView.byId("HasPreEveningEvent_id").getState();
+			if(bHasPreEveningEvent) {
+				oModel.setProperty(sPathHasPreEveningEvent, "Y");
+			} else {
+				oModel.setProperty(sPathHasPreEveningEvent, "N");
+			}
+			// HasPostEveningEvent
+			var sPathHasPostEveningEvent = oContext.getPath() + "/HasPostEveningEvent";
+			var bHasPostEveningEvent = oView.byId("HasPostEveningEvent_id").getState();
+			if(bHasPostEveningEvent) {
+				oModel.setProperty(sPathHasPostEveningEvent, "Y");
+			} else {
+				oModel.setProperty(sPathHasPostEveningEvent, "N");
+			}
+			// EventType
 			var sEventType = oView.byId("idEventType").getSelectedKey();
 			oModel.setProperty(oContext.getPath() + "/Type", sEventType);
 			// abort if the  model has not been changed

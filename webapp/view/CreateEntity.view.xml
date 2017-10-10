@@ -104,6 +104,18 @@
 						state="{= ${Visible} === 'Y' ? true : false }" 
 						customTextOn="Yes" 
 						customTextOff="No"/>
+					<Label text="{i18n>HasPreEveningEvent}" required="false"/>
+					<Switch
+						id="HasPreEveningEvent_id"
+						state="{= ${HasPreEveningEvent} === 'Y' ? true : false }" 
+						customTextOn="Yes" 
+						customTextOff="No"/>
+					<Label text="{i18n>HasPostEveningEvent}" required="false"/>
+					<Switch
+						id="HasPostEveningEvent_id"
+						state="{= ${HasPostEveningEvent} === 'Y' ? true : false }" 
+						customTextOn="Yes" 
+						customTextOff="No"/>
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>

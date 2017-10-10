@@ -49,7 +49,20 @@
 				<core:Item key="{EventType}" text="{Description}" />
 			</Select>
 			<Label text="{i18n>Visible}" required="false"/>
-			<Switch state="{= ${Visible} === 'Y' ? true : false }" 
+			<Switch
+				state="{= ${Visible} === 'Y' ? true : false }" 
+				enabled="false"
+				customTextOn="Yes" 
+				customTextOff="No"/>
+			<Label text="{i18n>HasPreEveningEvent}" required="false"/>
+			<Switch
+				state="{= ${HasPreEveningEvent} === 'Y' ? true : false }" 
+				enabled="false"
+				customTextOn="Yes" 
+				customTextOff="No"/>
+			<Label text="{i18n>HasPostEveningEvent}" required="false"/>
+			<Switch
+				state="{= ${HasPostEveningEvent} === 'Y' ? true : false }" 
 				enabled="false"
 				customTextOn="Yes" 
 				customTextOff="No"/>
