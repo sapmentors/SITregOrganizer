@@ -67,7 +67,7 @@
 									parts: [
 										{path: 'Ticket/TicketUsed'}
 									],
-									formatter : '.formatter.RSVPstatus'
+									formatter : '.formatter.TicketUsed'
 								}"/>
 				</cells>
 			</ColumnListItem>
