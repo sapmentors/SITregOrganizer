@@ -1,4 +1,4 @@
 # SITregOrganizer
-SAP Event Registration - Back end for Organizer
+SAP Event Registration - Back end UI for Organizer
 
 [SITreg](https://github.com/sapmentors/SITreg)
