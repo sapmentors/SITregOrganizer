@@ -30,7 +30,7 @@
 				id="list" 
 				items="{ 
 					path: '/Events', 
-					sorter: { path: 'Location', descending: false }, 
+					sorter: { path: 'Location', descending: false },
 					parameters:{
 						expand:'EventChangeable,RegistrationNumbers,PrePostEveningEventNumbers,ParticipantNumbers,EventType'
 					},
@@ -39,6 +39,7 @@
 				busyIndicatorDelay="{masterView>/delay}" 
 				noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" 
+				growingThreshold="100"
 				growing="true" 
 				growingScrollToLoad="true"
 				updateFinished="onUpdateFinished" 
