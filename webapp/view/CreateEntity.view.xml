@@ -35,7 +35,7 @@
 						name="EventDate" 
 						value="{ 
 							path: 'EventDate', 
-							type: 'sap.ui.model.type.Date', 
+							type: 'sap.ui.model.type.DateTime', 
 							formatOptions: { UTC:true }
 						}" 
 						id="EventDate_id" 
