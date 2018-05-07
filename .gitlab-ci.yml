@@ -3,7 +3,11 @@ image: timbru31/java-node
 before_script:
   - nodejs -v
   - which nodejs
+  - sudo npm install -g grunt
+  - sudo npm install -g js-yaml
 
 build:
   script:
-    - npm install
+    - mkdir -p tmp/mta
+    - wget -nv --output-document=tmp/mta/mta.jar $MTA_BUILDER_URL
+    - bash -ex build.sh
