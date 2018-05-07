@@ -1,0 +1,8 @@
+before_script:
+  - apt-get update -qq && apt-get install -y -qq openjdk-8-jre nodejs
+  - node -v
+  - which node
+
+rspec:
+  script:
+    - npm install
