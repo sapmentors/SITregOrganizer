@@ -1,0 +1,14 @@
+image: timbru31/java-node
+
+before_script:
+  - nodejs -v
+  - which nodejs
+  - npm install -g grunt
+  - npm install -g js-yaml
+
+build:
+  script:
+    - mkdir -p tmp/mta
+    - wget -nv --output-document=tmp/mta/mta.jar $MTA_BUILDER_URL
+    - bash -ex build.sh
+    - tmp/neo-java-web-sdk/tools/neo.sh deploy-mta --user ${CI_DEPLOY_USER} --host ${DEPLOY_HOST} --source ${CI_PROJECT_NAME}.mtar --account ${CI_DEPLOY_ACCOUNT} --password ${CI_DEPLOY_PASSWORD} --synchronous
