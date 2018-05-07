@@ -1,5 +1,6 @@
+image: timbru31/java-node
+
 before_script:
-  - apt-get update -qq && apt-get install -y -qq openjdk-8-jre nodejs
   - nodejs -v
   - which nodejs
 
