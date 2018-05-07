@@ -3,8 +3,8 @@ image: timbru31/java-node
 before_script:
   - nodejs -v
   - which nodejs
-  - sudo npm install -g grunt
-  - sudo npm install -g js-yaml
+  - npm install -g grunt
+  - npm install -g js-yaml
 
 build:
   script:
