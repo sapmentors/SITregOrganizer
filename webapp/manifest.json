@@ -33,7 +33,7 @@
 					},
 					"semanticObject": "SAPCommunityEvent",
 					"action": "manage",
-					"title": "Manage ",
+					"title": "Manage",
 					"icon": "sap-icon://date-time",
 					"indicatorDataSource": {
 						"dataSource": "mainService",
