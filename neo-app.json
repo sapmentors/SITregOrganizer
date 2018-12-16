@@ -39,6 +39,15 @@
       "description": "SAPUI5 Test Resources"
     },
     {
+      "path": "/sap",
+      "target": {
+        "type": "destination",
+        "name": "HANAMDC",
+        "entryPath": "/sap"
+      },
+      "description": "HANA MDC XS"
+    },
+    {
       "path": "/destinations/HANAMDC",
       "target": {
         "type": "destination",
