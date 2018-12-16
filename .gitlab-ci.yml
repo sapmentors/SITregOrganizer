@@ -9,4 +9,4 @@ before_script:
 build:
   script:
     - bash -ex build.sh
-    - tmp/neo-java-web-sdk/tools/neo.sh deploy-mta --user ${CI_DEPLOY_USER} --host ${DEPLOY_HOST} --source ${CI_PROJECT_NAME}.mtar --account ${CI_DEPLOY_ACCOUNT} --password "${CI_DEPLOY_PASSWORD}" --synchronous
+    - tmp/neo-java-web-sdk/tools/neo.sh deploy-mta --user ${CI_DEPLOY_USER} --host ${DEPLOY_HOST} --source ${CI_PROJECT_NAME}.mtar --account ${CI_DEPLOY_ACCOUNT} --password ${CI_DEPLOY_PASSWORD} --synchronous
