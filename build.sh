@@ -1,6 +1,6 @@
 # download the MTA archive builder
 mkdir -p tmp/mta
-wget -nv --output-document=tmp/mta/mta.jar --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.0.jar
+wget -nv --output-document=tmp/mta/mta.jar --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.7.jar
 
 # install the MTA archive builder
 WORKSPACE=`pwd`
