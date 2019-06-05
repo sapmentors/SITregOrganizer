@@ -14,3 +14,4 @@ mock_preview_sapui5.html
 .user.project.json
 .gitignore
 /.user.project.json
+node_modules
