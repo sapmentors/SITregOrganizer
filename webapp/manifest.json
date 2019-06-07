@@ -122,24 +122,21 @@
 				},
 				"async": "true"
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "master",
-					"target": [
-						"object",
-						"master"
-					]
-				},
-				{
-					"pattern": "Events/{ID}",
-					"name": "object",
-					"target": [
-						"master",
-						"object"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "master",
+				"target": [
+					"object",
+					"master"
+				]
+			}, {
+				"pattern": "Events/{ID}",
+				"name": "object",
+				"target": [
+					"master",
+					"object"
+				]
+			}],
 			"targets": {
 				"master": {
 					"viewName": "Master",
