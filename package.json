@@ -7,9 +7,18 @@
     "type": "git",
     "url": "https://github.com/sapmentors/SITregOrganizer.git"
   },
+  "scripts": {
+    "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo"
+  },
   "author": "SAP Mentors",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@sap/grunt-sapui5-bestpractice-build": "^1.4.1"
+    "@ui5/cli": "1.4.3",
+    "@sap/ui5-builder-webide-extension": "1.0.2"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension"
+    ]
   }
 }
