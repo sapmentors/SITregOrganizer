@@ -21,7 +21,9 @@ mtaName=`js-yaml mta.yaml | ./jq -r '.ID'`
 
 # replace timestamp placeholder
 sed -ie "s/\${timestamp}/`date +%Y%m%d%H%M%S`/g" mta.yaml
-
+# The MTA builder doesn't run the build when "builder: npm" so we do that before invoking it
+npm install
+npm run build
 # execute MTA build
 java -jar ${WORKSPACE}/tmp/mta/mta.jar --mtar ${CI_PROJECT_NAME}.mtar --build-target=NEO build
 #mkdir -p ${WORKSPACE}/dist/mta
