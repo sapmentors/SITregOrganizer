@@ -12,5 +12,10 @@ modules:
     parameters:
        version: 0.1.0-${timestamp}
     build-parameters:
-      builder: npm
+      before-all:
+        builders:
+          - builder: custom
+            commands: 
+              - npm run build
+          - builder: npm
       build-result: dist
