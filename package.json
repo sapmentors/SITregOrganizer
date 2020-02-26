@@ -8,7 +8,9 @@
     "url": "https://github.com/sapmentors/SITregOrganizer.git"
   },
   "scripts": {
-    "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo"
+    "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+    "build:local:neo": "/Users/gwolf/Downloads/sapjvm_8/bin/java -jar /Users/gwolf/Downloads/mta_archive_builder-1.1.20.jar --build-target=XSA --mtar sitregorganizer.mtar --build-target=NEO build",
+    "deploy:neo": "/Users/gwolf/Downloads/neo-java-web-sdk-3.99.14/tools/neo.sh deploy-mta --user ${CI_DEPLOY_USER} --host ${DEPLOY_HOST} --source sitregorganizer.mtar --account ${CI_DEPLOY_ACCOUNT} --password ${CI_DEPLOY_PASSWORD} --synchronous"
   },
   "author": "SAP Mentors",
   "license": "Apache-2.0",
