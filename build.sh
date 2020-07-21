@@ -1,3 +1,5 @@
+apt-get -y update
+apt-get -y install unzip
 # download the MTA archive builder
 mkdir -p tmp/mta
 curl -q -H "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.20.jar --output tmp/mta/mta.jar 
