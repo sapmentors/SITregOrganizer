@@ -17,7 +17,7 @@ rm neo-java-web-sdk-${neosdk}.zip
 
 # extract artifact name
 cd ${WORKSPACE}
-curl -p https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 --output jq 
+curl -p -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 --output jq 
 chmod +x ./jq
 mtaName=`js-yaml mta.yaml | ./jq -r '.ID'`
 
