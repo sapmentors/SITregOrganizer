@@ -1,8 +1,6 @@
-# Install wget
-apt-get install wget
 # download the MTA archive builder
 mkdir -p tmp/mta
-wget -nv --output-document=tmp/mta/mta.jar --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.20.jar
+curl -q -H "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.20.jar --output tmp/mta/mta.jar 
 
 # install the MTA archive builder
 WORKSPACE=`pwd`
@@ -11,13 +9,13 @@ WORKSPACE=`pwd`
 mkdir -p ${WORKSPACE}/tmp/neo-java-web-sdk
 cd ${WORKSPACE}/tmp/neo-java-web-sdk
 export neosdk=3.109.16
-wget -nv "https://repo1.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/${neosdk}/neo-java-web-sdk-${neosdk}.zip"
+curl -q "https://repo1.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/${neosdk}/neo-java-web-sdk-${neosdk}.zip" --output "neo-java-web-sdk-${neosdk}.zip"
 unzip -qq -o neo-java-web-sdk-${neosdk}.zip
 rm neo-java-web-sdk-${neosdk}.zip
 
 # extract artifact name
 cd ${WORKSPACE}
-wget -nv --output-document=jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+curl -p https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 --output jq 
 chmod +x ./jq
 mtaName=`js-yaml mta.yaml | ./jq -r '.ID'`
 
