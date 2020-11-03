@@ -2,7 +2,12 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History"
-], function(Controller, History) {
+], 
+/**
+ * @param {typeof sap.ui.core.mvc.Controller} Controller
+ * @param {typeof sap.ui.core.routing.History} History
+ */
+function(Controller, History) {
 	"use strict";
 
 	return Controller.extend("com.sap.sapmentors.sitreg.events.controller.BaseController", {
