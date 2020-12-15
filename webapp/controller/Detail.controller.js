@@ -5,7 +5,11 @@ sap.ui.define([
 	"com/sap/sapmentors/sitreg/events/model/formatter",
 	"sap/m/MessageBox",
 	"sap/m/MessageToast"
-], function(BaseController, JSONModel, formatter, MessageBox, MessageToast) {
+], 
+/**
+ * @param {typeof com.sap.sapmentors.sitreg.events.controller.BaseController} BaseController
+ */
+function(BaseController, JSONModel, formatter, MessageBox, MessageToast) {
 	"use strict";
 
 	return BaseController.extend("com.sap.sapmentors.sitreg.events.controller.Detail", {
