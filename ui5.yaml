@@ -1,4 +1,4 @@
-specVersion: '1.0'
+specVersion: "1.0"
 metadata:
   name: sitregorganizer
 type: application
@@ -23,5 +23,5 @@ builder:
         nameSpace: com.sap.sapmentors.sitreg.events
     - name: webide-extension-task-resources
       afterTask: webide-extension-task-lint
-      configuration:	
+      configuration:
         nameSpace: com.sap.sapmentors.sitreg.events
