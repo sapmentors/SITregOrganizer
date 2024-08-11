@@ -10,7 +10,7 @@ modules:
     type: html5
     path: .
     parameters:
-       version: 0.1.0-${timestamp}
+      version: 1.0.30-${timestamp}
     build-parameters:
       builder: npm
       build-result: dist
