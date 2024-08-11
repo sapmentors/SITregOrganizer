@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "/webapp/index.html",
+  "welcomeFile": "/index.html",
   "sendWelcomeFileRedirect": true,
   "routes": [
     {
@@ -64,13 +64,11 @@
     }
   ],
   "securityConstraints": [
-       {
-            "permission": "AccessApplicationDescriptor",
-            "description": "Access application descriptor",
-            "protectedPaths": [
-               "/neo-app.json"
-            ]
-       }
+    {
+      "permission": "AccessApplicationDescriptor",
+      "description": "Access application descriptor",
+      "protectedPaths": ["/neo-app.json"]
+    }
   ],
   "cacheControl": [
     {
