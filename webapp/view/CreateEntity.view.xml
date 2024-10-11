@@ -1,92 +1,95 @@
-<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
-	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.CreateEntity"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
 	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}"
+		busy="{viewModel>/busy}">
 		<semantic:content>
 			<f:SimpleForm
-				class="editableForm" 
-				columnsL="1" 
-				columnsM="1" 
-				editable="true" 
-				emptySpanL="4" 
-				emptySpanM="4" 
+				class="editableForm"
+				columnsL="1"
+				columnsM="1"
+				editable="true"
+				emptySpanL="4"
+				emptySpanM="4"
 				id="newEntitySimpleForm"
-				labelSpanL="3" 
-				labelSpanM="3" 
-				layout="ResponsiveGridLayout" 
-				maxContainerCols="2" 
+				labelSpanL="3"
+				labelSpanM="3"
+				layout="ResponsiveGridLayout"
+				maxContainerCols="2"
 				minWidth="1024"
 				title="{= ${viewModel>/mode} === 'edit'? ${i18n>editViewTitle} : ${i18n>createViewTitle} }">
 				<f:content>
-					<Label text="ID" required="true"/>
+					<Label text="ID" required="true" />
 					<Input name="ID" id="ID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
 						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
-						value="{ path: 'ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
-					<Label text="{i18n>Location}" required="true"/>
-					<Input name="Location" id="Location_id" valueLiveUpdate="true" 
+						value="{ path: 'ID', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }" />
+					<Label text="{i18n>Location}" required="true" />
+					<Input name="Location" id="Location_id" valueLiveUpdate="true"
 						liveChange="_validateSaveEnablement" enabled="true" visible="true"
-						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
-					<Label text="{i18n>Description}" required="false"/>
-					<Input name="Description" id="Description_id" valueLiveUpdate="true" 
+						value="{ path: 'Location', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }" />
+					<Label text="{i18n>Description}" required="false" />
+					<Input name="Description" id="Description_id" valueLiveUpdate="true"
 						liveChange="_validateSaveEnablement" enabled="true" visible="true"
-						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }"/>
-					<Label text="{i18n>EventDate}" required="true"/>
-					<DatePicker 
-						name="EventDate" 
+						value="{ path: 'Description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:100 } }" />
+					<Label text="{i18n>EventDate}" required="true" />
+					<DatePicker
+						name="EventDate"
 						value="{ 
 							path: 'EventDate', 
 							type: 'sap.ui.model.type.DateTime', 
 							formatOptions: { UTC:true }
-						}" 
-						id="EventDate_id" 
+						}"
+						id="EventDate_id"
 						enabled="true"
-						visible="true" 
-						valueFormat="yyyy-MM-dd" 
-						displayFormat="long"/>
-					<Label text="{i18n>StartTime}" required="true"/>
-					<DateTimePicker 
-						id="StartTime_id" 
+						visible="true"
+						valueFormat="yyyy-MM-dd"
+						displayFormat="long" />
+					<Label text="{i18n>StartTime}" required="true" />
+					<DateTimePicker
+						id="StartTime_id"
 						value="{ 
 							path: 'StartTime', 
 							type: 'sap.ui.model.type.DateTime', 
 							formatOptions: {  }
-						}" 
-						valueFormat="HH:mm" 
+						}"
+						valueFormat="HH:mm"
 						displayFormat="HH:mm"
-						placeholder="{i18n>StartTime}"/>
-					<Label text="{i18n>EndTime}" required="true"/>
-					<DateTimePicker 
-						id="EndTime_id" 
+						placeholder="{i18n>StartTime}" />
+					<Label text="{i18n>EndTime}" required="true" />
+					<DateTimePicker
+						id="EndTime_id"
 						value="{ 
 							path: 'EndTime', 
 							type: 'sap.ui.model.type.DateTime', 
 							formatOptions: {  }
-						}" 
-						valueFormat="HH:mm" 
+						}"
+						valueFormat="HH:mm"
 						displayFormat="HH:mm"
-						placeholder="{i18n>EndTime}"/>
-					<Label text="{i18n>MaxParticipants}" required="true"/>
-					<Input 
-						name="MaxParticipants" 
-						id="MaxParticipants_id" 
-						valueLiveUpdate="true" 
-						liveChange="_validateSaveEnablement" 
+						placeholder="{i18n>EndTime}" />
+					<Label text="{i18n>MaxParticipants}" required="true" />
+					<Input
+						name="MaxParticipants"
+						id="MaxParticipants_id"
+						valueLiveUpdate="true"
+						liveChange="_validateSaveEnablement"
 						enabled="true"
-						visible="true" 
-						value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }"/>
-					<Label text="{i18n>HomepageURL}" required="false"/>
-					<Input 
-						name="HomepageURL" 
-						id="HomepageURL_id" 
-						valueLiveUpdate="true" 
-						liveChange="_validateSaveEnablement" 
-						enabled="true" 
+						visible="true"
+						value="{ path: 'MaxParticipants', type: 'sap.ui.model.odata.type.Int32' }" />
+					<Label text="{i18n>HomepageURL}" required="false" />
+					<Input
+						name="HomepageURL"
+						id="HomepageURL_id"
+						valueLiveUpdate="true"
+						liveChange="_validateSaveEnablement"
+						enabled="true"
 						visible="true"
 						value="{
 							path: 'HomepageURL', 
 							type: 'sap.ui.model.odata.type.String', 
 							constraints:{ maxLength:256 } 
-						}"/>
+						}" />
 					<Label text="{i18n>masterFilterNameType}" />
 					<Select
 						forceSelection="false"
@@ -98,29 +101,29 @@
 						}">
 						<core:Item key="{EventType}" text="{Description}" />
 					</Select>
-					<Label text="{i18n>Visible}" required="false"/>
+					<Label text="{i18n>Visible}" required="false" />
 					<Switch
 						id="Visible_id"
-						state="{= ${Visible} === 'Y' ? true : false }" 
-						customTextOn="Yes" 
-						customTextOff="No"/>
-					<Label text="{i18n>HasPreEveningEvent}" required="false"/>
+						state="{= ${Visible} === 'Y' ? true : false }"
+						customTextOn="Yes"
+						customTextOff="No" />
+					<Label text="{i18n>HasPreEveningEvent}" required="false" />
 					<Switch
 						id="HasPreEveningEvent_id"
-						state="{= ${HasPreEveningEvent} === 'Y' ? true : false }" 
-						customTextOn="Yes" 
-						customTextOff="No"/>
-					<Label text="{i18n>HasPostEveningEvent}" required="false"/>
+						state="{= ${HasPreEveningEvent} === 'Y' ? true : false }"
+						customTextOn="Yes"
+						customTextOff="No" />
+					<Label text="{i18n>HasPostEveningEvent}" required="false" />
 					<Switch
 						id="HasPostEveningEvent_id"
-						state="{= ${HasPostEveningEvent} === 'Y' ? true : false }" 
-						customTextOn="Yes" 
-						customTextOff="No"/>
+						state="{= ${HasPostEveningEvent} === 'Y' ? true : false }"
+						customTextOn="Yes"
+						customTextOff="No" />
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
 		<semantic:saveAction>
-			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave" />
 		</semantic:saveAction>
 		<semantic:cancelAction>
 			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>

@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m">
-	<Table id="idPartipicantsTable" 
+	<Table id="idPartipicantsTable"
 		items="{ 
 			path: 'Participants', 
 			sorter: { path: 'ID' },
@@ -12,63 +12,65 @@
 		}">
 		<headerToolbar>
 			<Toolbar>
-				<Title text="{i18n>deatailIconPartipitants}" level="H2"/>
-				<ToolbarSpacer/>
-				<Button 
+				<Title text="{i18n>deatailIconPartipitants}" level="H2" />
+				<ToolbarSpacer />
+				<Button
 					icon="sap-icon://download"
 					tooltip="{i18n>exportToExcel}"
 					press="onDataExport"
 					text="{i18n>exportToExcel}"
 					id="tableParti" />
-				<Button 
-					tooltip="View Settings" 
-					icon="sap-icon://drop-down-list" 
+				<Button
+					tooltip="View Settings"
+					icon="sap-icon://drop-down-list"
 					press="handleViewSettingsDialogButtonPressed" />
 			</Toolbar>
 		</headerToolbar>
 		<columns>
 			<Column>
-				<Text text="ID"/>
+				<Text text="ID" />
 			</Column>
 			<Column>
-				<Text text="{i18n>columnFirstName}"/>
+				<Text text="{i18n>columnFirstName}" />
 			</Column>
 			<Column>
-				<Text text="{i18n>columnLastName}"/>
+				<Text text="{i18n>columnLastName}" />
 			</Column>
 			<Column minScreenWidth="Small" demandPopin="true">
-				<Text text="{i18n>columnEMail}"/>
+				<Text text="{i18n>columnEMail}" />
 			</Column>
 			<Column minScreenWidth="Tablet" demandPopin="false">
-				<Text text="User-ID"/>
+				<Text text="User-ID" />
 			</Column>
 			<Column hAlign="End">
-				<Text text="{i18n>columnRSVP}"/>
+				<Text text="{i18n>columnRSVP}" />
 			</Column>
 			<Column hAlign="End">
-				<Text text="{i18n>columnParticipated}"/>
+				<Text text="{i18n>columnParticipated}" />
 			</Column>
 		</columns>
 		<items>
 			<ColumnListItem type="Inactive" press="onPress">
 				<cells>
-					<ObjectIdentifier title="{ID}"/>
-					<Text text="{FirstName}"/>
-					<Text text="{LastName}"/>
-					<Text text="{EMail}"/>
-					<Text text="{History.CreatedBy}"/>
-					<Text text="{
+					<ObjectIdentifier title="{ID}" />
+					<Text text="{FirstName}" />
+					<Text text="{LastName}" />
+					<Text text="{EMail}" />
+					<Text text="{History.CreatedBy}" />
+					<Text
+						text="{
 									parts: [
 										{path: 'RSVP'}
 									],
 									formatter : '.formatter.RSVPstatus'
-								}"/>
-					<Text text="{
+								}" />
+					<Text
+						text="{
 									parts: [
 										{path: 'Ticket/TicketUsed'}
 									],
 									formatter : '.formatter.TicketUsed'
-								}"/>
+								}" />
 				</cells>
 			</ColumnListItem>
 		</items>

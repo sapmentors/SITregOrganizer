@@ -2,40 +2,45 @@
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m">
-	<f:SimpleForm 
-		id="eventForm" 
-		editable="false" 
+	<f:SimpleForm
+		id="eventForm"
+		editable="false"
 		title="{i18n>EventMasterData}"
 		class="editableForm sapUiSmallMarginTopBottom">
 		<f:content>
-			<Label text="{i18n>EventDate}"/>
-			<Text text="{ 
+			<Label text="{i18n>EventDate}" />
+			<Text
+				text="{ 
 							path: 'EventDate', 
 							type: 'sap.ui.model.type.Date', 
 							formatOptions: { style: 'medium' } 
-						}"/>
-			<Label text="{i18n>StartTime}"/>
-			<Text text="{ 
+						}" />
+			<Label text="{i18n>StartTime}" />
+			<Text
+				text="{ 
 				path: 'StartTime', 
 				type: 'sap.ui.model.type.Time', 
 				formatOptions: { pattern: 'HH:mm' }
-			}"/>
-			<Label text="{i18n>EndTime}"/>
-			<Text text="{ 
+			}" />
+			<Label text="{i18n>EndTime}" />
+			<Text
+				text="{ 
 				path: 'EndTime', 
 				type: 'sap.ui.model.type.Time', 
 				formatOptions: { pattern: 'HH:mm' } 
-			}"/>
-			<Label text="{i18n>HomepageURL}"/>
-			<Link href="{HomepageURL}" text="{HomepageURL}" target="_blank"/>
-			<Label text="{i18n>HistoryCreatedBy}"/>
-			<Text text="{History.CreatedBy}"/>
-			<Label text="{i18n>HistoryCreatedAt}"/>
-			<Text text="{ path: 'History.CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
-			<Label text="{i18n>HistoryChangedBy}"/>
-			<Text text="{History.ChangedBy}"/>
-			<Label text="{i18n>HistoryChangedAt}"/>
-			<Text text="{ path: 'History.ChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
+			}" />
+			<Label text="{i18n>HomepageURL}" />
+			<Link href="{HomepageURL}" text="{HomepageURL}" target="_blank" />
+			<Label text="{i18n>HistoryCreatedBy}" />
+			<Text text="{History.CreatedBy}" />
+			<Label text="{i18n>HistoryCreatedAt}" />
+			<Text
+				text="{ path: 'History.CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+			<Label text="{i18n>HistoryChangedBy}" />
+			<Text text="{History.ChangedBy}" />
+			<Label text="{i18n>HistoryChangedAt}" />
+			<Text
+				text="{ path: 'History.ChangedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
 			<Label text="{i18n>Type}" />
 			<Select
 				forceSelection="false"
@@ -48,48 +53,48 @@
 				}">
 				<core:Item key="{EventType}" text="{Description}" />
 			</Select>
-			<Label text="{i18n>Visible}" required="false"/>
+			<Label text="{i18n>Visible}" required="false" />
 			<Switch
-				state="{= ${Visible} === 'Y' ? true : false }" 
+				state="{= ${Visible} === 'Y' ? true : false }"
 				enabled="false"
-				customTextOn="Yes" 
-				customTextOff="No"/>
-			<Label text="{i18n>HasPreEveningEvent}" required="false"/>
+				customTextOn="Yes"
+				customTextOff="No" />
+			<Label text="{i18n>HasPreEveningEvent}" required="false" />
 			<Switch
-				state="{= ${HasPreEveningEvent} === 'Y' ? true : false }" 
+				state="{= ${HasPreEveningEvent} === 'Y' ? true : false }"
 				enabled="false"
-				customTextOn="Yes" 
-				customTextOff="No"/>
-			<Label text="{i18n>HasPostEveningEvent}" required="false"/>
+				customTextOn="Yes"
+				customTextOff="No" />
+			<Label text="{i18n>HasPostEveningEvent}" required="false" />
 			<Switch
-				state="{= ${HasPostEveningEvent} === 'Y' ? true : false }" 
+				state="{= ${HasPostEveningEvent} === 'Y' ? true : false }"
 				enabled="false"
-				customTextOn="Yes" 
-				customTextOff="No"/>
-			<Label text="{i18n>EventChangeable}"/>
-			<Text text="{EventChangeable/Changeable}"/>
+				customTextOn="Yes"
+				customTextOff="No" />
+			<Label text="{i18n>EventChangeable}" />
+			<Text text="{EventChangeable/Changeable}" />
 		</f:content>
 	</f:SimpleForm>
-	<f:SimpleForm 
-		id="eventStatisticsForm" 
-		editable="false" 
+	<f:SimpleForm
+		id="eventStatisticsForm"
+		editable="false"
 		title="{i18n>EventStatistics}"
 		class="editableForm sapUiSmallMarginTopBottom">
 		<f:content>
-			<Label text="{i18n>MaxParticipants}"/>
-			<Text text="{MaxParticipants}"/>
-			<Label text="{i18n>RegistrationNumbersParticipants}"/>
-			<Text text="{RegistrationNumbers/Participants}"/>
-			<Label text="{i18n>RegistrationNumbersFree}"/>
-			<Text text="{RegistrationNumbers/Free}"/>
-			<Label text="{i18n>Waiting}"/>
-			<Text text="{RegistrationNumbers/Waiting}"/>
-			<Label text="{i18n>PreEveningEvent}"/>
-			<Text text="{PrePostEveningEventNumbers/PreEveningEvent}"/>
-			<Label text="{i18n>PostEveningEvent}"/>
-			<Text text="{PrePostEveningEventNumbers/PostEveningEvent}"/>
-			<Label text="{i18n>ParticipantNumbersParticipated}"/>
-			<Text text="{ParticipantNumbers/Participated}"/>
+			<Label text="{i18n>MaxParticipants}" />
+			<Text text="{MaxParticipants}" />
+			<Label text="{i18n>RegistrationNumbersParticipants}" />
+			<Text text="{RegistrationNumbers/Participants}" />
+			<Label text="{i18n>RegistrationNumbersFree}" />
+			<Text text="{RegistrationNumbers/Free}" />
+			<Label text="{i18n>Waiting}" />
+			<Text text="{RegistrationNumbers/Waiting}" />
+			<Label text="{i18n>PreEveningEvent}" />
+			<Text text="{PrePostEveningEventNumbers/PreEveningEvent}" />
+			<Label text="{i18n>PostEveningEvent}" />
+			<Text text="{PrePostEveningEventNumbers/PostEveningEvent}" />
+			<Label text="{i18n>ParticipantNumbersParticipated}" />
+			<Text text="{ParticipantNumbers/Participated}" />
 		</f:content>
 	</f:SimpleForm>
 </core:FragmentDefinition>

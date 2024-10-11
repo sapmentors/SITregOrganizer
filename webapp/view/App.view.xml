@@ -1,4 +1,5 @@
-<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.App"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
 	busy="{appView>/busy}" busyIndicatorDelay="{appView>/delay}" xmlns="sap.m">
-	<SplitApp id="idAppControl"/>
+	<SplitApp id="idAppControl" />
 </mvc:View>

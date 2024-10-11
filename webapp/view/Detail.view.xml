@@ -1,19 +1,19 @@
-<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.Detail" 
-	xmlns="sap.m" 
+<mvc:View controllerName="com.sap.sapmentors.sitreg.events.controller.Detail"
+	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
-	xmlns:semantic="sap.m.semantic" 
-	xmlns:f="sap.ui.layout.form" 
+	xmlns:semantic="sap.m.semantic"
+	xmlns:f="sap.ui.layout.form"
 	xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="page" 
-		navButtonPress="onNavBack" 
-		showNavButton="{device>/system/phone}" 
+	<semantic:DetailPage id="page"
+		navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}"
 		title="{i18n>detailTitle}"
-		busy="{detailView>/busy}" 
+		busy="{detailView>/busy}"
 		busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" 
-				title="{Description}" 
+			<ObjectHeader id="objectHeader"
+				title="{Description}"
 				numberUnit="{i18n>detailEventID}: {ID}"
 				number="{ 
 					path: 'EventDate', 
@@ -24,15 +24,16 @@
 			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" 
-						icon="sap-icon://hint" 
+					<IconTabFilter id="iconTabBarFilter1"
+						icon="sap-icon://hint"
 						tooltip="{i18n>detailIconTabBarInfo}">
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.EventForm" type="XML" />
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" 
-						icon="sap-icon://employee-approvals" 
+					<IconTabFilter id="iconTabBarFilter2"
+						icon="sap-icon://employee-approvals"
 						tooltip="{i18n>detailIconTabBarCoOrganizers}">
-						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.CoOrganizerForm" type="XML" />
+						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.CoOrganizerForm"
+							type="XML" />
 					</IconTabFilter>
 					<!--
 					<IconTabFilter id="iconTabBarFilter3" 
@@ -41,16 +42,18 @@
 						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.DevicesForm" type="XML" />
 					</IconTabFilter>
 					-->
-					<IconTabFilter id="iconTabBarFilter4" 
-						icon="sap-icon://group" 
+					<IconTabFilter id="iconTabBarFilter4"
+						icon="sap-icon://group"
 						tooltip="{i18n>deatailIconPartipitants}">
-						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.PartipicantsTable" type="XML" />
+						<core:Fragment fragmentName="com.sap.sapmentors.sitreg.events.view.PartipicantsTable"
+							type="XML" />
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
 		</semantic:content>
 		<semantic:editAction>
-			<semantic:EditAction id="edit" press="onEdit" enabled="{= ${EventChangeable/Changeable} >= 1 ? true : false }"/>
+			<semantic:EditAction id="edit" press="onEdit"
+				enabled="{= ${EventChangeable/Changeable} >= 1 ? true : false }" />
 		</semantic:editAction>
 		<!-- Delete is not allowed by the OData Service -->
 		<!--
@@ -67,7 +70,8 @@
 		<!-- We don't use JAM -->
 		<!--
 		<semantic:shareInJamAction>
-			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}"
+		press="onShareInJamPress"/>
 		</semantic:shareInJamAction>
 		-->
 	</semantic:DetailPage>
