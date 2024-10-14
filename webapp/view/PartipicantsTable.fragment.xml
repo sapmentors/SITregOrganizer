@@ -3,7 +3,7 @@
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m">
 	<Table id="idPartipicantsTable"
-		growing="true" growingThreshold="200"
+		growing="true" growingThreshold="100"
 		items="{ 
 			path: 'Participants', 
 			sorter: { path: 'ID' },
