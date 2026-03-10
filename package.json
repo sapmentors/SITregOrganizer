@@ -17,7 +17,7 @@
   "devDependencies": {
     "@sap/ui5-builder-webide-extension": "^1.1.9",
     "@sapui5/ts-types": "^1.129.2",
-    "@ui5/cli": "^3"
+    "@ui5/cli": "^4"
   },
   "ui5": {
     "dependencies": [
